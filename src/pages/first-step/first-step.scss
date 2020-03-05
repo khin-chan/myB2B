@@ -1,0 +1,48 @@
+page-first-step {
+
+  .toolbar-background {
+    background: #fff;
+    border-color: transparent;
+  }
+
+  .slide-zoom {
+    height: 100%;
+  }
+
+  .slide-title {
+    margin-top: 2rem;
+    margin-bottom: 3.7rem;
+    font-size: 2rem;
+    color: #242424;
+  }
+
+  .slide-image {
+    max-height: 25%;
+    max-width: 35%;
+    margin: 20px 0;
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  p {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #60646B;
+
+    b {
+      color: #585656;
+      font-size: 1.6rem;
+    }
+  }
+  .swiper-pagination .swiper-pagination-bullet {
+
+    background: #de1f26;
+
+  }
+}

@@ -1,0 +1,26 @@
+<!--
+  Generated template for the MobilePostTypePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-title><span class="{{font}}"> Video and Content </span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="page-mobile-post-type">
+  <div style="width:100%">
+    <ion-card (click)="goVideoPost()">
+      <img src="assets/images/b2b3.jpeg" />
+      <div class="card-title"> Video </div>
+    </ion-card>
+
+    <ion-card (click)="goContentPost()">
+      <img src="assets/images/b2b2.jpeg" />
+      <div class="card-title"> Content </div>
+    </ion-card>
+  </div>
+</ion-content>

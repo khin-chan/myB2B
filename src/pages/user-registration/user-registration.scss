@@ -1,0 +1,90 @@
+page-user-registration {
+
+  .img-adject:hover .close {
+    opacity: 1;
+  }
+  hr{
+    margin-left:10px;
+    color: grey;
+  }
+
+  .list-md .item[no-lines] .item-inner {
+    border-bottom: 1px solid #dedede;
+  }
+
+  .list-md {
+    margin: -1px 0 10px;
+  }
+
+  .label-md {
+    margin: 13px 8px 13px 0;
+    font-family: Unicode;
+  }
+
+  .select-text {
+    font-family: Unicode;
+  }
+  .scroll-content {
+    padding-top: 0 !important;
+  }
+
+  .user-content {
+    background: #e8e8e8; //#d4534e
+
+    .login-box {
+      background: #509287;
+      padding: 20px 20px 0px 20px;
+      margin-top: 30px;
+    }
+
+    ion-row {
+      align-items: center;
+      text-align: center;
+    }
+
+    ion-item {
+      border-radius: 30px !important;
+      padding-left: 30px !important;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+      border: 1px solid #ffffff;
+      border-bottom: 0px !important;
+      box-shadow: none !important;
+    }
+
+    .signup-col {
+      margin: 0px 16px 0px 16px;
+      padding-bottom: 20px;
+    }
+
+    .item-inner {
+      border-bottom-color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    .submit-btn {
+      background: #d14842;//#0d6eb6;
+      border-radius: 30px !important;
+      border: 1px solid #ffffff;
+    }
+  }
+  .button-md {
+    height: 4.6rem;
+  }
+  .img-wrap1 {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+  }
+  .imgheight{
+    height:100px;
+    width:100px;
+    border-radius: 50px;
+    margin-top: -53px;
+    object-fit: cover;
+  }
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+    color: #fff;
+    background-color: transparent;
+  }
+}

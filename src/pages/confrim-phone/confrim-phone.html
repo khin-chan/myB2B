@@ -1,0 +1,52 @@
+<!--
+  Generated template for the ConfrimPhonePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar transparent style="background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%, rgba(255, 255, 0, 0.2) 100%, rgba(0, 255, 255, 0) 100%);">
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="confirmPhone-content" padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+        <h1 style="color:#0c6db6;font-size: 20px;margin-top:50px;" class="{{font}}">{{textData[0]}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p style="color: #0c6db6;margin-bottom:40px;" class="{{font}}">{{textData[1]}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+  <form>
+    <ion-list inset>
+
+      <ion-item>
+        <ion-input type="type" placeholder="{{textData[2]}}" class="{{font}}" name="phone" [(ngModel)]="phone" required disabled="true"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn" full (click)="Oncancel()" ><span class="{{font}}">{{textData[4]}}</span></button>
+      </ion-col>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn" full (click)="OnConfirmPhone()"><span class="{{font}}">{{textData[5]}}</span></button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

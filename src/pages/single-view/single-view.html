@@ -1,0 +1,181 @@
+<!--
+  Generated template for the SingleViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-buttons left *ngIf="status ==1">
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="md-arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title><span class="{{font}}">{{textData[0]}}</span></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="commentContent"> 
+  <div *ngIf="nores == 1">
+    <ion-card style="margin: 0px 0px 8px 0px !important; width: 100% !important;">
+      <ion-item>
+        <img item-left src="{{writerImg}}/{{detailData.perData.t16}}" *ngIf="detailData.perData.t16 != '' && detailData.perData.t16 !=null " (click)="writerProfile(detailData.perData)" onError="this.src = 'assets/images/user-icon.png'" style="width:48px;height: 48px;border-radius: 50%;object-fit: cover;">
+        <text-avatar [text]="detailData.perData.t2" item-left *ngIf="detailData.perData.t16 == '' || detailData.perData.t16 ==null " (click)="writerProfile(detailData.perData)"></text-avatar>
+        <ion-row>
+            <ion-col style="text-align: left;">
+                <h2 style="font-weight: bold;" class="{{font}}" (click)="writerProfile(detailData.perData)" >{{detailData.perData.t2}}</h2>
+                <p style="padding-left: 0px;font-size:1.2rem;color: #808080;" (click)="writerProfile(detailData.perData)">{{ detailData.modifiedDate}} at {{ detailData.modifiedTime}}</p>
+            </ion-col>
+            <ion-col style="text-align: right;">
+              <span *ngIf=" detailData.t4 == 'premium'" class="premiumStyle">PREMIUM</span>
+              <ion-note item-end>
+                  <button ion-button clear icon-right (click)="clickBookMark(detailData)">
+                    <ion-icon *ngIf="detailData.showContent" name="ios-bookmark" style="color: #0474bc;" ></ion-icon>
+                    <ion-icon *ngIf="!detailData.showContent" name="ios-bookmark" style="color: #bbb;" ></ion-icon>
+                  </button>
+                </ion-note>
+            </ion-col>
+          </ion-row>
+      </ion-item>
+      <hr style=" display: block; margin: 0px 3px 0px 3px; border: none; background-color: lightgrey">
+      <div>
+        <h2 class="{{font}}" style="padding: 7px 0px 0px 15px;font-weight:bold;">{{detailData.t1}}</h2>
+      </div>
+      <ion-card-content>
+        <div class="{{font}}">
+          <!--<p [innerHTML]="detailData.t2" ></p>-->
+           <!--<div class="video-container" *ngIf="detailData.t8" (click)="goDetail(detailData)">
+            <img id="projectplayer" src="{{detailData.videoLink}}" />
+            <button class="play" style="position: absolute;right: 45%;bottom: 40%;" ><ion-icon name="play"></ion-icon></button>
+          </div>-->
+          <div>
+              <div *ngFor="let i of array1" >
+                <p [innerHTML]="i.t2" *ngIf="i.t1 == 'text'" class="emojisize"></p>
+                <div class="container">
+                 <img [src]="i.t2" *ngIf="i.t1 == 'img' && !detailData.t8 && !detailData.videoStatus" onError="this.src = 'assets/images/imgErr.png'" (click)="singlePhoto(i.t2)" class="resize_fit_center">
+                 <h3 style="font-weight: bold;padding-top: 10px;font-size: 1.5rem">{{i.caption}}</h3>
+                </div> 
+              </div>
+          </div>
+          <div class="video-container" *ngIf="detailData.n10 != 2 && (detailData.t8 || detailData.videoStatus)">
+            <video (playing)="onPlayingVideo($event,k)" controls="controls" id="video" poster="{{detailData.videoLink}}" controlsList="nodownload" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer" style="width: 100%;">
+              <source [src]="sanitizer.bypassSecurityTrustResourceUrl(detailData.t8)" type="video/mp4">
+            </video>
+          </div>
+          <div *ngIf="detailData.n10 == 2">  <!-- (playing)="onPlayingVideo($event,k)"  -->
+            <iframe width="100%"  height="315" id="video" controls="controls" [src]="detailData.playvideoLink" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+        </div>
+      </ion-card-content>
+      <ion-row style="font-size: 1.5rem;" *ngIf="detailData.n2 > 0 && detailData.n3 == 0">
+        <ion-col style="text-align: left;">
+          <span style="margin-left: 15px;color: #0474bc;" *ngIf="detailData.n2 > 0 " (click)="getLikePerson(detailData)"><ion-icon name="ios-thumbs-up" ></ion-icon>&nbsp;&nbsp;{{detailData.n2}}</span>
+        </ion-col>
+      </ion-row>
+       <hr style=" display: block; margin: 10px 3px 0px 3px; border: none; background-color: lightgrey">
+
+     <ion-row>
+         <ion-col text-center style="padding: 0px;">
+           <button ion-button clear icon-right style="padding: 0px;" (click)="clickLike(detailData)">
+            <ion-icon *ngIf="detailData.showLike" name="ios-thumbs-up" style="color: #0474bc;" ></ion-icon>
+            <ion-icon *ngIf="!detailData.showLike" name="ios-thumbs-up" style="color: #bbb;" ></ion-icon>
+            <span *ngIf="detailData.showLike" style="text-transform: none; color:#0474bc; padding: 5px 0px 0px 5px;font-size: 1.35rem;" class="{{font}}">{{textData[3]}}</span>
+            <span *ngIf="!detailData.showLike" style="text-transform: none; color:#808080; padding: 5px 0px 0px 5px;font-size: 1.35rem;" class="{{font}}">{{textData[3]}}</span>
+           </button>
+         </ion-col>
+
+         <ion-col text-center style="padding: 0px;">
+           <button ion-button clear  style="padding: 0px;">
+             <ion-icon name="ios-text" style="color: #bbb; font-size: 23px;"></ion-icon>
+             <span style="text-transform: none; color:#808080; padding: 3px 0px 0px 5px;font-size: 1.35rem;" class="{{font}}">{{textData[4]}}</span>
+           </button>
+         </ion-col>
+
+         <ion-col text-center style="padding: 0px;">
+           <button ion-button clear icon-left (click)="share(detailData)" style="padding: 0px;">
+             <ion-icon name="share-alt" style="color: #bbb"></ion-icon>
+             <span style="text-transform: none; color: #808080;font-size: 1.35rem;" class="{{font}}">{{textData[5]}}</span>
+           </button>
+         </ion-col>
+       </ion-row>
+    </ion-card>
+    <div *ngIf="nores1 == 1">
+    <span style="margin-top: 10px;margin-left: 15px;color: #0474bc;" *ngIf="detailData.n2 > 0 && detailData.n3 > 0" (click)="getLikePerson(detailData)"><ion-icon name="ios-thumbs-up" ></ion-icon>&nbsp;&nbsp;{{detailData.n2}}</span>
+    <ion-list *ngIf="replyData.length > 0">
+      <ion-item *ngFor="let cmt of replyData;let j = index" no-lines (press)="presentPopover($event,cmt)">
+        <div style="float: left;padding-top:10px; ">        
+          <img item-left src="{{profileLink}}/{{cmt.t10}}" *ngIf="cmt.t10 != '' && cmt.t10 !=null && cmt.t10 != 'user-icon.png'" style="width:45px;height: 45px;border-radius: 50%;object-fit:cover;margin-right: 0px;" onError="this.src = 'assets/images/user-icon.png'">        
+          <text-avatar [text]="cmt.userName" item-left *ngIf="cmt.userName !='' && (cmt.t10 == '' || cmt.t10 ==null ||  cmt.t10 == 'user-icon.png')"></text-avatar>
+          <text-avatar text="B2B" item-left *ngIf="cmt.userName =='' && (cmt.t10 == '' || cmt.t10 ==null || cmt.t10 == 'user-icon.png')"></text-avatar>
+        </div>
+        <div style="float: left;width:84%;padding:8px 0px 0px 8px;">
+        <h4 style="font-weight: bold;margin-top: 5px;" class="{{font}}" *ngIf="cmt.userName">{{cmt.userName}}</h4>
+         <h4 style="font-weight: bold;margin-top: 5px;" class="{{font}}" *ngIf="cmt.userName==''">B2B User</h4>
+        <p text-wrap style="color: #000000;line-height: 16px;font-size:1.3rem;" class="{{font}}">{{cmt.t2}}</p>
+  
+        <p style="font-size:1.2rem;">
+          <span *ngIf="cmt.differenceTime == ' W'" style="color: #b1a7a7;">{{ cmt.modifiedDate}} </span>
+          <span *ngIf="cmt.differenceTime != ' W'" style="color: #b1a7a7;">{{cmt.differenceTime}}</span>
+            &nbsp;<span style="font-size:17px;color: #b1a7a7;line-height: 10px;">.</span>&nbsp;
+            <span  (click)="changeLike(cmt.syskey,j)" style="color: #0474bc;">{{cmt.like}}</span>
+            <span *ngIf="cmt.likeCount > 0" (click)="likePerson(cmt.person)" style="color:#0474bc;">&nbsp;<span style="font-size:17px;color: #0474bc;line-height: 10px;">.</span>&nbsp;<ion-icon name="ios-thumbs-up" *ngIf="cmt.likeCount > 0"></ion-icon>&nbsp;&nbsp;{{cmt.likeCount}}</span>
+          &nbsp;<span style="font-size:17px;color: #0474bc;line-height: 10px;">.</span>&nbsp;
+          <span  (click)="ClickReply(cmt)" style="color: #0474bc;">Reply</span>
+        </p>
+  
+        <p *ngIf="cmt.replyCount > 0" style="font-weight: bold;" (click)="ClickReply(cmt)">View more {{cmt.replyCount}}&nbsp; {{cmt.textreply}} </p>
+        <div (click)="ClickReply(cmt)" *ngIf="cmt.replyComment.length > 0 && cmt.replyComment[0].person.length>0">
+          <div style="float:left;">
+            <img src="{{profileLink}}/{{cmt.replyComment[0].person[0].t16}}" onError="this.src = 'assets/images/user-icon.png'" style="width:23px;height: 23px;border-radius: 50%;object-fit:cover;margin-right: 0px;" >
+          </div>
+          <div style="float:left;width: 84%;margin-top:5px;padding-left: 5px;">
+            <p>
+              <span style="font-size:1.3rem;font-weight: bold;color: #000000;" class="{{font}}" *ngIf="cmt.replyComment[0].person[0].t2">{{cmt.replyComment[0].person[0].t2}}</span >
+              <span style="font-size:1.3rem;font-weight: bold;color: #000000;" class="{{font}}" *ngIf="cmt.replyComment[0].person[0].t2 == ''">B2B User</span >&nbsp;
+              <span  class="{{font}}" style="color: #000000;font-size:1.2rem;">{{cmt.replyComment[0].t2}}</span>
+            </p>
+          </div>
+        </div>  
+        </div>
+      </ion-item>
+    </ion-list>
+    <div *ngIf="sendingstatus">
+      <ion-row>
+        <ion-col col-3>
+          <div style="color:#808080;" align="right">Sending</div>
+        </ion-col>
+        <ion-col>
+          <ion-spinner name="dots"></ion-spinner>
+        </ion-col>
+      </ion-row>
+    </div>
+    </div>
+    <div *ngIf="nores1 == 0" align="center">
+      <h3 style="padding:50px;color:#ccc;font-size:1.6rem;"> <span class="{{font}}">{{textData[7]}}</span></h3>
+    </div>
+  </div>
+  <div *ngIf="nores == 0 " align="center">
+    <h3 style="padding:50px;color:#ccc;font-size:1.9rem;"> <span class="{{font}}">{{textData[1]}}</span></h3>
+  </div>  
+</ion-content>
+<ion-footer no-border>
+  <ion-row style="margin-top:6px">
+    <ion-col col-10 style="padding-left:8px">      
+        <ion-input
+            class="{{textFont}}"
+            placeholder="{{textData[2]}}..."
+            [(ngModel)]="comment"
+            (keyup.enter)="saveComment()"
+            (focus)="onFocus()">
+        </ion-input>
+    </ion-col>
+    <ion-col col-2 style="text-align:right">
+      <button ion-button clear icon-only item-right (click)="saveComment()">
+        <ion-icon name="ios-send" ios="ios-send" md="md-send" style="color: #EB6640;"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

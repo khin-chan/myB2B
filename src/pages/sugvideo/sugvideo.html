@@ -1,0 +1,136 @@
+<ion-header no-border>
+  <ion-navbar transparent
+    style="background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.0) 100%, rgba(0, 0, 0, 0.1) 100%);">
+    <ion-title>
+      <font color="white"></font>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-color: black;" fullscreen>
+  <div style="padding-top: 5px;" *ngIf="isLoading">
+    <div align="center">
+      <ion-spinner name="circles" style="color: #EB6640;"></ion-spinner>
+    </div>
+  </div>
+  <div *ngIf="nores == 1 " style="background: black;">
+
+    <ion-card
+      style="background-color: black !important;color: #808080 !important;margin: 0px 0px 15px 0px !important; width: 100% !important;"
+      *ngFor="let i of menuList; let k = index">
+      <div>
+        <ion-item style="background-color: black !important;color:white !important;">
+          <img item-left src="{{writerImg}}/{{i.perData.t16}}" *ngIf="i.perData.t16 != '' && i.perData.t16 !=null "
+            (click)="writerProfile(i.k)" onError="this.src = 'assets/images/user-icon.png'"
+            style="width:48px;height: 48px;border-radius: 50%;object-fit: cover;">
+          <text-avatar [text]="i.perData.t2" item-left *ngIf="i.perData.t16 == '' || i.perData.t16 == null "
+            (click)="writerProfile(i,k)"></text-avatar>
+          <ion-row>
+            <ion-col style="text-align: left;">
+              <h2 style="font-weight: bold;color: #808080;" class="{{font}}" (click)="writerProfile(i,k)">
+                {{i.perData.t2}}</h2>
+              <p style="padding-left: 0px;font-size:1.2rem;color: #808080;" (click)="writerProfile(i,k)">
+                {{ i.modifiedDate}} at {{ i.modifiedTime}} </p>
+            </ion-col>
+            <ion-col style="text-align: right;">
+              <span *ngIf=" i.t4 == 'premium'" class="premiumStyle">PREMIUM</span>
+              <ion-note item-end>
+                <button ion-button clear icon-right (click)="clickBookMark(i,k,'')"
+                  style="padding-left: 0px;padding-right: 0px;">
+                  <ion-icon *ngIf="i.showContent" name="ios-bookmark" style="color: #0474bc;"></ion-icon>
+                  <ion-icon *ngIf="!i.showContent" name="ios-bookmark" style="color: #bbb;"></ion-icon>
+                </button>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+        <div>
+          <h2 class="{{font}}"
+            style="padding-left: 15px;padding-top:7px;padding-bottom:5px;font-weight:bold;color: #808080;">{{i.t1}}</h2>
+        </div>
+
+        <ion-card-content style="padding: 0px 15px 0px 15px;">
+          <ion-card-title>
+            <div class="video-container" *ngIf="(i.n10 == 1 || i.n10 == 0) && i.t4 == 'premium' && !billStatus" style="height: 191px; object-fit: cover;" (click)="paymentBill()">
+               <video id="vodo" poster="{{i.videoLink}}" class="resize_fit_center" controlsList="nodownload" webkit-playsinline="webkit-playsinline" class="myPlayer" style="width: 100%;">
+                 <source src="{{i.playvideoLink}}" type="video/mp4"> 
+               </video>  
+               <button class="play" style="position: absolute;right: 39%;bottom: 34%;"><ion-icon name="play" style="font-size: 2em; margin-left: 6px;"></ion-icon></button>
+            </div>
+
+            <div class="video-container" *ngIf="(i.n10 == 1 || i.n10 == 0) && (i.t4 != 'premium' || billStatus)">
+               <video (playing)="onPlayingVideo($event,k)" id="vodo" controls="controls" poster="{{i.videoLink}}" class="resize_fit_center" controlsList="nodownload" webkit-playsinline="webkit-playsinline" class="myPlayer" style="width: 100%;">
+                 <source src="{{i.playvideoLink}}" type="video/mp4">
+                </video>
+             </div>
+
+            <div *ngIf="i.n10 == 2">
+              <!--(playing)="onPlayingVideo($event,k)" [src]="sanitizer.bypassSecurityTrustResourceUrl(i.playvideoLink)"-->
+              <iframe width="100%" [src]="i.playvideoLink" height="315" id="video" controls="controls" frameborder="0"
+                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+          </ion-card-title>
+        </ion-card-content>
+
+        <p class=" text-with-block {{font}} emojisize" *ngIf="i.showread && i.seeMore"
+          style="padding-left: 13px;padding-right: 13px;color: #bbb;" [innerHTML]="i.shMsg" (click)="seeMoreData(k,i)">
+        </p>
+        <p *ngIf="i.showread && i.seeMore" class="{{font}} emojisize" (click)="seeMoreData(k,i)"
+          style="padding-left: 13px;font-weight:bold;color: #bdbdbd;font-size:1.5rem">... See More</p>
+        <p class=" {{font}}" *ngIf="i.showread && !i.seeMore" style="padding: 0px 13px 0px 13px;color: #bbb;"
+          [innerHTML]="i.shMsg"></p>
+        <p class=" {{font}}" *ngIf="!i.showread && !i.seeMore" style="padding: 0px 13px 0px 13px;color: #bbb;"
+          [innerHTML]="i.shMsg"></p>
+
+        <ion-row style="font-size: 1.5rem;margin-top: 5px;margin-bottom: 5px;">
+          <ion-col style="text-align: left;">
+            <span style="margin-left: 15px;color: #0474bc;" *ngIf="i.n2 > 0 " (click)="getLikePerson(i,k)">
+              <ion-icon name="ios-thumbs-up"></ion-icon>&nbsp;&nbsp;{{i.n2}}
+            </span>
+          </ion-col>
+          <ion-col style="text-align: right;">
+            <span *ngIf="i.n3 == 1" class="{{font}}" style="color:#808080;margin-right: 15px;"
+              (click)="comment(i,k)">{{i.n3}}&nbsp;Comment</span>
+            <span *ngIf="i.n3 > 1" class="{{font}}" style="color:#808080;margin-right: 15px;"
+              (click)="comment(i,k)">{{i.n3}}&nbsp;Comments</span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center style="padding: 0px;">
+            <button ion-button clear icon-right style="padding: 0px;" (click)="clickLike(i,k,'')">
+              <ion-icon *ngIf="i.showLike" name="ios-thumbs-up" style="color: #0474bc;"></ion-icon>
+              <ion-icon *ngIf="!i.showLike " name="ios-thumbs-up" style="color: #bbb;"></ion-icon>
+              <span *ngIf="i.showLike"
+                style="text-transform: none; color:#0474bc; padding: 5px 0px 0px 5px;font-size: 1.35rem;"
+                class="{{font}}">{{textData[1]}}</span>
+              <span *ngIf="!i.showLike "
+                style="text-transform: none; color:#808080; padding: 5px 0px 0px 5px;font-size: 1.35rem;"
+                class="{{font}}">{{textData[1]}}</span>
+            </button>
+          </ion-col>
+          <ion-col text-center style="padding: 0px;">
+            <button ion-button clear style="padding: 0px;" (click)="comment(i,k)">
+              <ion-icon name="ios-text" style="color:#bbb; font-size: 23px;"></ion-icon>
+              <span style="text-transform: none; color:#808080; padding: 3px 0px 0px 2px;font-size: 1.35rem;"
+                class="{{font}}">{{textData[2]}}</span>
+            </button>
+          </ion-col>
+          <ion-col text-center style="padding: 0px;">
+            <button ion-button clear icon-left (click)="share(i)" style="padding: 0px;">
+              <ion-icon name="ios-share-alt" style="color: #bbb"></ion-icon>
+              <span style="text-transform: none; color: #808080;font-size: 1.35rem;"
+                class="{{font}}">{{textData[3]}}</span>
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+  </div>
+  <h3 style="padding:50px;color:#ccc;font-size:1.9rem;" *ngIf="nores == 0" align="center"> <span
+      class="{{font}}">{{textData[4]}}</span></h3>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="circles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

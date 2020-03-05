@@ -1,0 +1,7 @@
+{
+  "name": "B2B",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

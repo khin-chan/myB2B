@@ -1,0 +1,72 @@
+<!--
+  Generated template for the WriterListDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+  <ion-header no-border align="center">
+
+    <ion-navbar color="b2b">
+      <ion-title><span class="{{font}}">{{passData.t2}}</span></ion-title>
+      <ion-buttons end style="padding-right:20px;">
+        <button ion-button icon-only style="color: #de1f26;">
+          <ion-icon name="ios-cog"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <div class="firstdiv">
+    <div align="center" style="font-size: 1.05em;color: #ffffff;padding-top: 10px;" class="{{font}}">
+      <span >Active&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span *ngIf="passData.gender">{{passData.gender}}</span><span *ngIf="passData.dob">&nbsp;&nbsp;|&nbsp;&nbsp;Born &nbsp;{{passData.dob}} </span>
+    </div>
+    <div class="img-wrap1" align="center">
+      <img src="{{imageLink}}/{{passData.t16}}" class="resize" (click)="viewProfile(passData.t16)" onError="this.src = 'assets/images/user-icon.png'">
+    </div>
+    <ion-row>
+      <ion-col style="text-align:right;">
+        <span class="iconStyle1" (click)="phoneCall(passData.t4)">
+          <ion-icon name="ios-call-outline"></ion-icon>
+        </span>
+        <p style="color:#FFFFFF;text-align:right;margin-top:7px;">Phone</p>
+      </ion-col>  
+      <ion-col style="text-align:center;">
+        <span class="iconStyle2" (click)="showEmail()">
+          <ion-icon name="ios-mail-outline"></ion-icon>
+        </span>
+        <p style="color:#FFFFFF;text-align:center;margin-top:7px;">Email</p>
+      </ion-col> 
+      <ion-col style="text-align:left;">
+        <span class="iconStyle3" (click)="showPost()">
+         <ion-icon name="ios-menu-outline"></ion-icon>
+       </span>
+       <p style="color:#FFFFFF;text-align:left;margin-left:10px;margin-top:7px;">Posts</p>
+      </ion-col> 
+    </ion-row>
+  </div>
+  <div class="seconddiv">
+    <ion-item-group>
+      <ion-item-divider color="light" style="font-weight: 500;font-size: 16px;">
+       <span class="{{font}}"> {{textData[0]}}</span>
+      </ion-item-divider>
+      <ion-item *ngIf="passData.t3">
+        <h3 style="font-weight: bold;padding-left: 5px;padding-top:5px;color: #0c6db6;">
+          <span class="{{font}}">{{textData[1]}}</span></h3>
+        <p style="padding-left: 5px;" class="{{font}}">{{passData.t3}}</p>
+      </ion-item>
+      <ion-item *ngIf="passData.t4">
+        <h3 style="font-weight: bold;padding-left: 5px;padding-top:5px;color: #0c6db6;" >
+          <span class="{{font}}">{{textData[2]}}</span></h3>
+        <p style="padding-left: 5px;" class="{{font}}">{{passData.t4}}</p>
+      </ion-item>
+      <ion-item *ngIf="passData.t8">
+        <h3 style="font-weight: bold;padding-left: 5px;padding-top:5px;color: #0c6db6;">
+          <span class="{{font}}">{{textData[3]}}</span></h3>
+        <p style="padding-left: 5px;" class="{{font}}">{{passData.t8}}</p>
+      </ion-item>
+    </ion-item-group>
+  </div>
+</ion-content>

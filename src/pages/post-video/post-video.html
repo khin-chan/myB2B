@@ -1,0 +1,336 @@
+<!--
+  Generated template for the PostVideoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-title><span class="{{font}}"> Video </span></ion-title>
+<!-- 
+    <ion-buttons end style="margin-right:7px;">
+      <button ion-button icon-only tappable (click)="search($event)" style="margin-right:7px;">
+        <ion-icon name="ios-funnel" style="font-size: 24px;"></ion-icon>
+      </button>
+    </ion-buttons>
+ -->
+    <ion-buttons end style="margin-right: 7px;">
+   <!--    <button ion-button clear style="color: #fff" (click)="savePost1()" disabled="true" *ngIf="flag">
+        <ion-icon name="md-checkmark-circle" style="font-size: 2.0em;"></ion-icon>
+      </button>
+      <button ion-button clear style="color: #fff" (click)="savePost1()" *ngIf="!flag">
+        <ion-icon name="md-checkmark-circle" style="font-size: 2.0em;"></ion-icon>
+      </button> -->
+
+      <button ion-button class="editbtn" (click)="savePost1()" disabled="true" *ngIf="flag">
+        <span style="color:#000;text-transform: none; font-weight: bold;font-size: 12px;" *ngIf="!new"> Save </span>
+        <span style="color:#000;text-transform: none; font-weight: bold;font-size: 12px;" *ngIf="new"> Update </span>
+      </button>
+
+      <button ion-button class="editbtn" (click)="savePost1()" *ngIf="!flag">
+        <span style="color:#000;text-transform: none; font-weight: bold;font-size: 12px;" *ngIf="!new"> Save </span>
+        <span style="color:#000;text-transform: none; font-weight: bold;font-size: 12px;" *ngIf="new"> Update </span>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end style="margin-right:10px;">
+  <!--     <button ion-button icon-only tappable (click)="deletePost()" style="margin-right:7px;" disabled="true" *ngIf="flag">
+        <ion-icon name="ios-trash" style="font-size: 2.3em;"></ion-icon>
+      </button>
+      <button ion-button icon-only tappable (click)="deletePost()" style="margin-right:7px;" *ngIf="!flag">
+        <ion-icon name="ios-trash" style="font-size: 2.3em;"></ion-icon>
+      </button>
+ -->
+      <button ion-button class="editbtn1" (click)="deletePost()" disabled="true" *ngIf="flag">
+        <span style="color:#000;text-transform: none; font-weight: bold;font-size: 12px;"> Delete </span>
+      </button>
+      <button ion-button class="editbtn1" (click)="deletePost()" *ngIf="!flag">
+        <span style="color:#000;text-transform: none; font-weight: bold;font-size: 12px;"> Delete </span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content fullscreen class="edit-content">
+  <ion-list>
+   <!--  <div *ngIf="filter" style="padding-left: 10px;padding-top: 10px;padding-right: 10px;"> -->
+    <div style="padding-left: 10px;padding-top: 10px;padding-right: 10px;">
+      <ion-item no-lines> 
+        <ion-label stacked style="margin-top: 5px;">Title</ion-label>
+        <ion-textarea text-wrap class="{{inputFont}}" style="color: black;padding-right: 15px;font-size: 1.4rem;margin-top: -3px;"
+          [(ngModel)]="title" name="post" class="textArea" disabled="true" *ngIf="flag">
+        </ion-textarea>
+        <ion-textarea text-wrap class="{{inputFont}}" style="color: black;padding-right: 15px;font-size: 1.4rem;margin-top: -3px;"
+          [(ngModel)]="title" name="post" class="textArea" *ngIf="!flag">
+        </ion-textarea>
+      </ion-item>
+
+   <!--    <ion-item no-lines>
+        <ion-label stacked style="margin-top: 5px;">Video Duration Time</ion-label>
+        <ion-textarea text-wrap style="color: black;padding-right: 15px; font-size: 1.4rem; max-height: 28px;"
+          [(ngModel)]="durationTime" name="post" disabled="true" *ngIf="flag">
+        </ion-textarea>
+        <ion-textarea text-wrap style="color: black;padding-right: 15px; font-size: 1.4rem; max-height: 28px;"
+          [(ngModel)]="durationTime" name="post" *ngIf="!flag">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-item no-lines>
+        <ion-label stacked style="margin-top: 5px;">File Size</ion-label>
+        <ion-textarea text-wrap style="color: black;padding-right: 15px; font-size: 1.4rem; max-height: 28px;"
+          [(ngModel)]="fileSize" name="post" disabled="true" *ngIf="flag">
+        </ion-textarea>
+        <ion-textarea text-wrap style="color: black;padding-right: 15px; font-size: 1.4rem; max-height: 28px;"
+          [(ngModel)]="fileSize" name="post" *ngIf="!flag">
+        </ion-textarea>
+      </ion-item> -->
+
+      <ion-row>
+        <ion-col col-6 style="padding-right: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Status</ion-label>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="status" disabled="true" *ngIf="flag">
+              <ion-option *ngFor="let status of statusArr" [value]="status" class="option" text-wrap>
+                {{status}}
+              </ion-option>
+            </ion-select>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="status" *ngIf="!flag">
+              <ion-option *ngFor="let status of statusArr" [value]="status" class="option" text-wrap>
+                {{status}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6 style="padding-left: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked stacked style="margin-top: 5px;">Type</ion-label>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="type" disabled="true">
+              <ion-option [value]="type" class="option" text-wrap>
+                {{type}}
+              </ion-option>  
+            </ion-select>
+           <!--  <ion-select style="font-size:1.4rem;" [(ngModel)]="type" *ngIf="!flag">
+              <ion-option [value]="type" class="option" text-wrap>
+                {{type}}
+              </ion-option>
+            </ion-select> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6 style="padding-right: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Publish Date</ion-label>
+            <ion-datetime class="datetime-md" style="font-size:1.4rem;margin-top: -9px;" displayFormat="MMM DD YYYY" min="2000" max="2020-12-31"
+              [(ngModel)]="publishDate" disabled="true" *ngIf="flag">
+            </ion-datetime>
+            <ion-datetime class="datetime-md" style="font-size:1.4rem;margin-top: -9px;" displayFormat="MMM DD YYYY" min="2000" max="2020-12-31"
+              [(ngModel)]="publishDate" *ngIf="!flag">
+            </ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6 style="padding-left: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked stacked style="margin-top: 5px;">Schedule Time</ion-label>
+            <!-- <ion-select style="font-size:1.4rem;" [(ngModel)]="scheduleTime" disabled="true" *ngIf="flag">
+              <ion-option *ngFor="let time of scheduleTimes" [value]="time.value" class="option" text-wrap>
+                {{time.caption}}
+              </ion-option>
+            </ion-select>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="scheduleTime" *ngIf="!flag">
+              <ion-option *ngFor="let time of scheduleTimes" [value]="time.value" class="option" text-wrap>
+                {{time.caption}}
+              </ion-option>
+            </ion-select> -->
+            <ion-datetime style="font-size:1.4rem;margin-top: -9px;" displayFormat="h:mm" pickerFormat="HH:mm A" [(ngModel)]="scheduleTime" 
+             minuteValues="0,10,20,30,40,50" disabled="true" *ngIf="flag">
+            </ion-datetime>
+            <ion-datetime style="font-size:1.4rem;margin-top: -9px;" displayFormat="h:mm" pickerFormat="HH:mm A" [(ngModel)]="scheduleTime" 
+             minuteValues="0,10,20,30,40,50" *ngIf="!flag">
+            </ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6 style="padding-right: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Status Type</ion-label>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="statusType" (ionChange)="statusTypeChange(statusType)"
+              disabled="true" *ngIf="flag">
+              <ion-option *ngFor="let statusType of statusTypeArr" [value]="statusType" class="option" text-wrap>
+                {{statusType}}
+              </ion-option>
+            </ion-select>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="statusType" (ionChange)="statusTypeChange(statusType)"
+              *ngIf="!flag">
+              <ion-option *ngFor="let statusType of statusTypeArr" [value]="statusType" class="option" text-wrap>
+                {{statusType}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6 style="padding-left: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Video Type</ion-label>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="videoType" (ionChange)="videoTypeChange(videoType)"
+              disabled="true" *ngIf="flag">
+              <ion-option *ngFor="let videoType of videoTypeArr" [value]="videoType" class="option" text-wrap>
+                {{videoType}}
+              </ion-option>
+            </ion-select>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="videoType" (ionChange)="videoTypeChange(videoType)"
+              *ngIf="!flag">
+              <ion-option *ngFor="let videoType of videoTypeArr" [value]="videoType" class="option" text-wrap>
+                {{videoType}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item no-lines *ngIf="selectURL">
+        <ion-label stacked style="margin-top: 5px;"> URL Link </ion-label>
+        <ion-textarea text-wrap  style="color: black;padding-right: 15px;font-size: 1.4rem;max-height: 42px;margin-top: -3px;"
+          [(ngModel)]="urlLink" name="post" disabled="true" *ngIf="flag">
+        </ion-textarea>
+        <ion-textarea text-wrap  style="color: black;padding-right: 15px;font-size: 1.4rem;max-height: 42px;margin-top: -3px;"
+          [(ngModel)]="urlLink" name="post" *ngIf="!flag">
+        </ion-textarea>
+      </ion-item>
+
+      <ion-row *ngIf="selectLarner">
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Teacher</ion-label>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="teacherData" disabled="true" *ngIf="flag">
+              <ion-option *ngFor="let i of teacherArr" [value]="i.value" class="option" text-wrap>
+                {{i.caption}}
+              </ion-option>
+            </ion-select>
+            <ion-select style="font-size:1.4rem;" [(ngModel)]="teacherData" *ngIf="!flag">
+              <ion-option *ngFor="let i of teacherArr" [value]="i.value" class="option" text-wrap>
+                {{i.caption}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-list style="padding-left: 13px !important;margin: 0px 0 0px !important;">
+        <ion-row style="margin-left: 0px;height:47px;" class="noti">
+
+          <ion-col col-4 *ngIf="!selectURL">
+            <button ion-button style="background-color: #e8e8e8;color: #000;border-radius: 6px;margin-left: -3px;" (click)="chooseVideo()" class="submit-btn" full disabled="true" *ngIf="flag">Choose
+              Video</button>
+            <button ion-button style="background-color: #e8e8e8;color: #000;border-radius: 6px;margin-left: -3px;" (click)="chooseVideo()" class="submit-btn" full *ngIf="!flag">Choose Video</button>
+          </ion-col>
+
+          <ion-col col-4>
+            <ion-item no-lines style="background-color: #e8e8e8;">
+              <ion-note item-start>
+                <ion-checkbox style="margin: 0px !important;" [(ngModel)]="notiChecked" disabled="true" *ngIf="flag"></ion-checkbox>
+              </ion-note>
+              <ion-note item-start>
+                <ion-checkbox style="margin: 0px !important;" [(ngModel)]="notiChecked" *ngIf="!flag"></ion-checkbox>
+              </ion-note>
+              <ion-note item-end class="note-costcenter">
+                <ion-label stacked style="margin: 0px !important; "> <span style="color:#a29d9d!important;padding-right: 1em ; ">
+                    Noti</span>
+                </ion-label>
+              </ion-note>
+            </ion-item>
+          </ion-col>
+
+          <ion-col col-4>
+            <ion-item no-lines style="background-color: #e8e8e8;">
+              <ion-note item-start>
+                <ion-checkbox style="margin: 0px !important;" [(ngModel)]="pinChecked" (ionChange)="pinChange(pinChecked)"
+                  disabled="true" *ngIf="flag">
+                </ion-checkbox>
+              </ion-note>
+              <ion-note item-start>
+                <ion-checkbox style="margin: 0px !important;" [(ngModel)]="pinChecked" (ionChange)="pinChange(pinChecked)"
+                  *ngIf="!flag">
+                </ion-checkbox>
+              </ion-note>
+              <ion-note item-end class="note-dept">
+                <ion-label stacked style="margin: 0px !important; "><span style="color:#a29d9d!important;padding-right:1em;">
+                    Pinned</span>
+                </ion-label>
+              </ion-note>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+
+      <ion-row *ngIf="showPinDate" style="padding-top: 5px;">
+        <ion-col col-6 style="padding-right: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Pinned Start Date</ion-label>
+            <ion-datetime style="font-size:1.4rem;margin-top: -9px;" displayFormat="MMM DD YYYY" min="2000" max="2020-12-31" [(ngModel)]="pinStartDate"
+              disabled="true" *ngIf="flag">
+            </ion-datetime>
+            <ion-datetime style="font-size:1.4rem;margin-top: -9px;" displayFormat="MMM DD YYYY" min="2000" max="2020-12-31" [(ngModel)]="pinStartDate"
+              *ngIf="!flag">
+            </ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6 style="padding-left: 3px;">
+          <ion-item no-lines>
+            <ion-label stacked style="margin-top: 5px;">Pinned End Date</ion-label>
+            <ion-datetime style="font-size:1.4rem;margin-top: -9px;" displayFormat="MMM DD YYYY" min="2000" max="2020-12-31" [(ngModel)]="pinEndDate"
+              disabled="true" *ngIf="flag">
+            </ion-datetime>
+            <ion-datetime style="font-size:1.4rem;margin-top: -9px;" displayFormat="MMM DD YYYY" min="2000" max="2020-12-31" [(ngModel)]="pinEndDate"
+              *ngIf="!flag">
+            </ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    
+    <div style="margin-left: 7px;margin-right: 7px;">
+
+      <ion-textarea autosize text-wrap class="{{inputFont}}" class="textArea" [(ngModel)]="postText" name="post"
+        placeholder="Write and Content.................." style="color: black;font-size: 1.4rem;"
+        disabled="true" *ngIf="flag">
+      </ion-textarea>
+      <ion-textarea autosize text-wrap class="{{inputFont}}" class="textArea" [(ngModel)]="postText" name="post"
+        placeholder="Write and Content.................." style="color: black;font-size: 1.4rem;"
+        *ngIf="!flag">
+      </ion-textarea>
+
+
+      <div *ngIf="!selectURL" align="center" style="margin-top: 20px;">
+        <div *ngFor="let i of videoPost">
+          <video *ngIf="i.value!=''" controls style="width: 240px;height: 240px;" type="video/mp4">
+            <source src="{{i.value}}" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div *ngIf="post.length > 0" align="center" style="margin-top: 20px;">
+        <div *ngFor="let i of post; let j=index;">
+          <img src="{{i.value}}" style="width: 240px;height: 250px;object-fit: cover;" *ngIf="i.type=='img' && i.value!=null && i.value!=''" no-lines >
+        </div>
+      </div>
+
+    </div>
+  </ion-list>
+
+  <ion-fab right bottom color="danger" disabled="true" *ngIf="flag">
+    <button color="danger" ion-fab (click)="selectPhoto()">
+      <ion-icon name="md-images"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab right bottom color="danger" *ngIf="!flag">
+    <button color="danger" ion-fab (click)="selectPhoto()">
+      <ion-icon name="md-images"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

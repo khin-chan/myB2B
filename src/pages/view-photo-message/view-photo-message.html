@@ -1,0 +1,26 @@
+<!--
+  Generated template for the ViewPhotoMessagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar transparent style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.91) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.0) 100%, rgba(0, 0, 0, 0.1) 100%);">
+    <ion-title><font color="white"></font></ion-title>
+    <!--<ion-buttons end style="padding-left:15px;"> 
+      <button ion-button icon-only (click)="downLoadFile(image)">
+        <ion-icon name="md-download"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content text-center class="vertical-align-content">  
+  <!--<div text-center style="display: flex !important;justify-content: center !important;align-items: center !important;height: 100%;">
+    <img src="{{image}}" alt=""  style="width: 100%; height: auto;" onError="this.src = 'assets/images/imgErr.png'" imageViewer>
+  </div>-->
+  <img src="{{image}}" alt=""  style="width: 100%; height: auto;" onError="this.src = 'assets/images/imgErr.png'" imageViewer>
+  <div class="my-overlay" *ngIf="this.contentImg == ''">
+    <p text-center>Sent on {{senddate}} at {{sendtime}} </p>
+  </div>
+</ion-content>

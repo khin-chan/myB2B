@@ -1,0 +1,32 @@
+<!--
+  Generated template for the InnovationTabsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-shadow no-border>
+  <ion-navbar color="b2b">
+    <button ion-button menuToggle color="yellow">
+      <ion-icon name="menu"></ion-icon>
+      <!--<span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;" *ngIf="noticount > 0 || notiStatus"></span>-->
+      <span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;"
+        *ngIf=" notiStatus"></span>
+    </button>
+    <ion-title><span class="{{font}}">B2B</span></ion-title>
+    <!--<ion-buttons end style="padding-left:5px;">
+      <button ion-button icon-only (click)="goNotiList()">
+        <ion-icon name="ios-notifications"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div class="scroll-content" style=" margin-top: -88px;">
+    <super-tabs selectedTabIndex="0" toolbarColor="light" toolbarBackground="b2b" indicatorColor="light" badgeColor="danger" [config]="{ sideMenu: 'left' }" (tabSelect)="onTabSelect($event)">
+      <super-tab [root]="tab1Root" title={{textData[0]}} icon="ios-document" class="{{font}}"></super-tab>
+      <super-tab [root]="tab2Root" title={{textData[1]}} icon="ios-videocam" class="{{font}}"></super-tab>
+      <super-tab [root]="tab3Root" title={{textData[2]}} icon="ios-mic" class="{{font}}"></super-tab>
+    </super-tabs>
+  </div>
+</ion-content>

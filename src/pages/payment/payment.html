@@ -1,0 +1,123 @@
+<!--
+  Generated template for the PaymentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header style="background-color: #de1f26;">
+  <ion-row>
+    <ion-col col-2 (click)="goback()" style="padding-left: 6px;">
+      <ion-icon name="ios-arrow-round-back"
+        style="margin-left: 14px;margin-top:6px;font-size: 30px;color: #fff;font-weight: 700;"></ion-icon>
+    </ion-col>
+    <ion-col>
+      <h3 style="color: #fff;font-size: 2rem;font-weight: 500;padding-left: 12px;margin-top: 10px;"> Payment </h3>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content style="background-color: #313131">
+
+  <div id="welcome" style="vertical-align: middle;text-align: center;margin-top: 15px;">
+    <img src="assets/images/B2B_LOGO.gif" class="logo" />
+  </div>
+
+  <div>
+    <h1 style=" font-size: 22px;color:#fff;margin-top:5px;text-align: center"> Choose Your Plan </h1>
+
+    <div>
+      <ion-row *ngFor="let category of categories;" style="padding-left: 13px;padding-right: 13px;padding-top: 10px;">
+        <ion-item no-lines style="border-radius: 5px;border:  1px solid white !important;color:#fff;"
+          [ngStyle]="{ background: category.checked ? '#e74f4f': 'transparent'}">
+          <ion-label> {{category.month}} - {{category.name}} MMK </ion-label>
+          <ion-checkbox item-right [(ngModel)]="category.checked" (click)="selection(category)"> </ion-checkbox>
+        </ion-item>
+      </ion-row>
+    </div>
+
+    <!--  <div style="vertical-align: middle;text-align: center;padding-top: 40px;padding-bottom: 20px;"> -->
+
+    <div
+      style="padding-top: 40px;padding-bottom: 20px;margin-left: 13px;margin-right: 13px;vertical-align: middle;text-align: center;">
+
+    <ion-row
+        style="padding-right: 10px;padding-left: 10px;background-color: #fff;border-radius: 5px;margin-top: 10px;"
+        (click)="go2C2P()">
+        <ion-col col-2>
+          <!--   <img src="assets/images/123.png" style="width: 55px;height: 50px;margin-top: 10px;" /> -->
+          <img src="assets/images/123.png" style="width: 45px;height: 45px;margin-top: 13px;" />
+        </ion-col>
+        <ion-col col-2>
+            <!-- <img src="assets/images/MC.jpg" style="width:60px;height: 50px;margin-top: 10px;" /> -->
+            <img src="assets/images/MC.jpg" style="width:45px;height: 45px;margin-top: 14px;" />
+        </ion-col>
+        <ion-col col-2>
+           <!--  <img src="assets/images/kbzlogo.jpg" style="width: 50px;height: 50px;margin-top: 10px;" /> -->
+           <img src="assets/images/kbzlogo.jpg" style="width: 45px;height: 45px;margin-top: 14px;" />
+        </ion-col>
+        <ion-col col-2>
+            <img src="assets/images/m-pitesan.png" style="width:85px;height: 55px;margin-top: 10px;" />
+        </ion-col>
+        <ion-col col-2>
+           <!--  <img src="assets/images/MPU2.png" style="width: 60px;height: 50px;margin-top: 12px;" /> -->
+           <img src="assets/images/MPU2.png" style="width: 45px;height: 45px;margin-top: 14px;" />
+        </ion-col>
+        <ion-col col-2>
+            <img src="assets/images/visalogo.gif" style="width: 55px;height: 50px;margin-top: 10px;" />
+        </ion-col>
+      </ion-row> 
+      
+<!-- 
+     <ion-row style="padding-right: 10px;padding-left: 10px;background-color: #fff;border-radius: 5px;"
+        (click)="go2C2P()">
+        <ion-col>
+          <img src="assets/images/123.png" style="width:85px;height: 65px;margin-top: 7px;" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row
+        style="padding-right: 10px;padding-left: 10px;background-color: #fff;border-radius: 5px;margin-top: 10px;"
+        (click)="go2C2P()">
+        <ion-col col-6>
+          <img src="assets/images/kbz1.png" style="width:125px;height: 65px;margin-top: 7px;margin-left: 45px;" />
+        </ion-col>
+        <ion-col col-6>
+          <img src="assets/images/m-pitesan.png" style="width:85px;height: 65px;margin-top: 7px;margin-right: 45px;" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row
+        style="padding-right: 10px;padding-left: 10px;background-color: #fff;border-radius: 5px;margin-top: 10px;"
+        (click)="go2C2P()">
+        <ion-col col-4>
+          <img src="assets/images/visalogo.gif" style="width:85px;height: 65px;margin-top: 7px;" />
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/images/master.png" style="width:85px;height: 65px;margin-top: 7px;" />
+        </ion-col>
+        <ion-col col-4>
+          <img src="assets/images/MPU.png" style="width:80px;height: 60px;margin-top: 12px;" />
+        </ion-col>
+      </ion-row> -->
+
+      <ion-row
+        style="padding-right: 10px;padding-left: 10px;background-color: #fff;border-radius: 5px;margin-top: 10px;"
+        (click)="goBluePlanet()">
+        <ion-col col-3>
+          <img src="assets/images/mpt.png" style="width:65px;height: 55px;margin-top: 8px;" />
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/images/telenor.jpg" style="width:65px;height: 55px;margin-top: 8px;" />
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/images/ooredoo.jpg" style="width:65px;height: 55px;margin-top: 8px;" />
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/images/mytel.jpg" style="width:60px;height: 55px;margin-top: 8px;" />
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+</ion-content>

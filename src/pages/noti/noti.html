@@ -1,0 +1,190 @@
+<!--
+  Generated template for the NotiPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-buttons left *ngIf="status==1">
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="md-arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Notification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="ion-note">
+  <div ion-fixed style="padding-top: 10px;" *ngIf="isLoading">
+    <div align="center">
+      <ion-spinner name="circles" style="color: #EB6944;background-color: white;border-radius: 50%;"></ion-spinner>
+    </div>
+  </div>
+  <ion-refresher (ionRefresh)="doRefresh($event)" transparent *ngIf="!isLoading">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list no-lines style="margin:  0 0 0 0;">
+    <div *ngFor="let s of notis ; let k = index">
+      <ion-item (click)="singleview(s)" *ngIf="s.status == 1" style="background-color: #f2efef;" tappable>
+        <div>
+          <div class="img-wrap">
+            <img
+              style="height: 60px;width: 60px;padding-left: 3px;display: inline-block;margin-left: 3px;margin-right: 0;border-radius: 100%; margin-top: 13px; object-fit: cover;"
+              src="{{imglnk}}/{{s.userPhoto}}" onError="this.src = 'assets/images/user-icon.png'">
+            <!--{{imglnk}}/{{s.userPhoto}}-->
+            <button ion-button icon-only
+              style="margin-left: -24px;padding: 4px 3px 3px 4px;margin-top: -14px;background-color: #05c715;height: 2.4rem;border-radius: 100%;">
+              <ion-icon name="ios-chatboxes" style="font-size: 1.6em;color: #e8e4e4;" *ngIf="s.iconStatus == 'comment'">
+              </ion-icon>
+              <ion-icon name="ios-thumbs-up" style="font-size: 1.7em;color: #e8e4e4; margin-top:-3px"
+                *ngIf="s.iconStatus == 'like'">
+              </ion-icon>
+              <ion-icon name="ios-chatboxes" style="font-size: 1.6em;color: #e8e4e4;" *ngIf="s.iconStatus == 'reply'">
+              </ion-icon>
+              <ion-badge style="background-color:#2DC70D;float:right;" *ngIf="s.noti > 0">{{s.noti}}</ion-badge>
+            </button>
+          </div>
+        </div>
+        <div style="float: left;width: 79%; margin-top: 14px;">
+          <ion-item style="background-color: #f2efef;">
+            <div class="item-inner">
+              <div class="input-wrapper" style="margin: 0 -27px 0 -3px;">
+                <span class="approval">
+                  <p text-wrap
+                    style="margin: 0 3px 0 -3px;overflow: inherit;font-size: 1.6rem;line-height: normal;text-overflow: inherit;">
+                    <span *ngIf="s.iconStatus == 'comment'"> <span style="font-weight: bold;">{{s.name}} </span>comment
+                      on <span style="font-weight: bold;">{{s.postName}}</span>'s post. </span>
+                    <span *ngIf="s.iconStatus == 'like'"> <span style="font-weight: bold;">{{s.name}} </span>like on
+                      your comment. </span>
+                    <span *ngIf="s.iconStatus == 'reply'"> <span style="font-weight: bold;">{{s.name}} </span> replied
+                       your comment on <span style="font-weight: bold;">{{s.postName}}</span>'s post. </span>
+                    <p
+                      style="margin:0 3px 0 -3px;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(161, 161, 161);">
+                      {{s.time}} <span *ngIf="s.timestatus">ago</span>
+                      <span
+                        style="margin-right: 1%;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(161, 161, 161);text-align: right;float: right;">
+                        {{s.date}}
+                      </span>
+                    </p>
+                </span>
+              </div>
+            </div>
+          </ion-item>
+        </div>
+      </ion-item>
+
+      <ion-item (click)="singleview(s)" *ngIf="s.status != 1" style="background-color: #FFFFFF;" tappable>
+        <div>
+          <div class="img-wrap">
+            <img
+              style="height: 60px;width: 60px;padding-left: 3px;display: inline-block;margin-left: 3px;margin-right: 0;border-radius: 100%; margin-top: 13px; object-fit: cover;"
+              src="{{imglnk}}/{{s.userPhoto}}" onError="this.src = 'assets/images/user-icon.png'">
+            <button ion-button icon-only
+              style="margin-left: -24px;padding: 4px 3px 3px 4px;margin-top: -14px;background-color: #05c715;height: 2.4rem;border-radius: 100%;">
+              <ion-icon name="ios-chatboxes" style="font-size: 1.6em;color: #e8e4e4;" *ngIf="s.iconStatus == 'comment'">
+              </ion-icon>
+              <ion-icon name="ios-thumbs-up" style="font-size: 1.7em;color: #e8e4e4; margin-top:-3px"
+                *ngIf="s.iconStatus == 'like'">
+              </ion-icon>
+              <ion-icon name="ios-chatboxes" style="font-size: 1.6em;color: #e8e4e4;" *ngIf="s.iconStatus == 'reply'">
+              </ion-icon>
+              <ion-badge style="background-color:#2DC70D;float:right;" *ngIf="s.noti > 0">{{s.noti}}</ion-badge>
+            </button>
+          </div>
+        </div>
+        <div style="float: left;width: 79%; margin-top: 14px;">
+          <ion-item class="item-md item item-block">
+            <div class="item-inner">
+              <div class="input-wrapper" style="margin: 0 -27px 0 -3px;">
+                <span class="approval">
+                  <p text-wrap
+                    style="margin: 0 3px 0 -3px;overflow: inherit;font-size: 1.6rem;line-height: normal;text-overflow: inherit;">
+                    <span *ngIf="s.iconStatus == 'comment'"> <span style="font-weight: bold;">{{s.name}} </span>comment
+                      on <span style="font-weight: bold;">{{s.postName}}</span>'s post. </span>
+                    <span *ngIf="s.iconStatus == 'like'"> <span style="font-weight: bold;">{{s.name}} </span>like on
+                      your comment. </span>
+                    <span *ngIf="s.iconStatus == 'reply'"> <span style="font-weight: bold;">{{s.name}} </span> replied
+                       your comment on <span style="font-weight: bold;">{{s.postName}}</span>'s post. </span>
+                    <p
+                      style="margin:0 3px 0 -3px;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(161, 161, 161);">
+                      {{s.time}} <span *ngIf="s.timestatus">ago</span>
+                      <span
+                        style="margin-right: 1%;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(161, 161, 161);text-align: right;float: right;">
+                        {{s.date}}
+                      </span>
+                    </p>
+                </span>
+              </div>
+            </div>
+          </ion-item>
+        </div>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <h3 style="padding:50px;color:#ccc;font-size:1.9rem;" align="center" *ngIf="this.nores == 0"> <span
+      class="{{font}}">{{textData[0]}}</span></h3>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!isLoading">
+    <ion-infinite-scroll-content loadingSpinner="circles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+
+
+
+<!-- <div>
+          <div class="img-wrap">
+            <img style="height: 60px;width: 60px;padding-left: 3px;display: inline-block;margin-left: 3px;margin-right: 0;" src="assets/imgs/circle_image1.png"> 
+              <button ion-button icon-only style="min-width: 1.9em;margin-left: -29px;padding-top: 3px;margin-top: -2px;background-color: #3082ee;height: 2.6rem;border-radius: 100%;">
+                <ion-icon name="md-thumbs-up" style="padding-right: 3px;margin-left: -10px;padding-top: 2px;margin-bottom: 4px;color: #e8e4e4;"></ion-icon>
+              </button>          
+          </div>
+     </div>   
+    
+    <div style="float: left;width: 82%;">
+        <ion-item class="item-md item item-block">
+            <div class="item-inner">
+                <div class="input-wrapper">
+                  <span class="approval">
+                      <p text-wrap style="margin: 0 3px 0 -6px;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(172, 172, 172);text-align: justify;">
+                          <a>Myat Po Po Aung, Khaing War Thin </a>and <a>13 other people</a> comment on your post.</p>
+                      <p text-wrap style="margin: 0 3px 0 -6px;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(172, 172, 172);text-align: justify;"> 
+                          5 hours ago
+                      </p>
+                </span> 
+              </div>
+            </div>
+        </ion-item>
+    </div>
+    
+      <div>
+          <div class="img-wrap">
+            <img style="height: 60px;width: 60px;padding-left: 3px;display: inline-block;margin-left: 3px;margin-right: 0;" src="assets/imgs/circle_image1.png"> 
+             <button ion-button icon-only style="min-width: 1.9em;margin-left: -29px;padding-top: 3px;margin-top: -2px;background-color: #078d1d;height: 2.6rem;border-radius: 100%;">
+               <ion-icon name="ios-chatboxes-outline" style="padding-right: 3px;margin-left: -10px;padding-top: 2px;margin-bottom: 4px;color: #e8e4e4;"></ion-icon>
+             </button>          
+          </div>
+    </div>   
+    
+    <div style="float: left;width: 82%;">
+            <ion-item class="item-md item item-block">
+                <div class="item-inner">
+                  <div class="input-wrapper">
+                    <span class="approval">
+                        <p text-wrap style="margin: 0 3px 0 -6px;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(172, 172, 172);text-align: justify;">
+                            <a>Khaing Zin Aung</a> and<a>May Yamin Thaw</a> like your comment on his post.</p>
+                        <p text-wrap style="margin: 0 3px 0 -6px;overflow: inherit;font-size: 1.4rem;line-height: normal;text-overflow: inherit;color: rgb(172, 172, 172);text-align: justify;"> 
+                            5 hours ago
+                        </p>
+                    </span> 
+                 </div>
+               </div>
+          </ion-item>
+  </div> -->

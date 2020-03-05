@@ -1,0 +1,143 @@
+page-single-view {
+  /*$userBackgroundColor: #75a3a3;
+  $toUserBackgroundColor: #81c784;
+
+  ion-content .scroll-content {
+    background-color: #f5f5f5;
+  }*/
+
+  ion-input, ion-textarea {
+    position: relative;
+    display: block;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    border: 1px solid rgba(13, 45, 55, 0.16);
+    border-radius: 50px;
+  }
+  .text-input-md {
+    margin: 8px 15px;
+    padding: 0;
+    width: calc(100% - 8px - 8px);
+  }
+  .text-input-ios {
+    margin: 8px 15px;
+    padding: 0;
+    width: calc(100% - 8px - 8px);
+  }
+
+
+  .resize {
+    height: 200px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 200px;
+    display: inline-block;
+    margin-right: auto;
+    object-fit: cover;
+    // margin-top: 10px;
+  }
+  .imgsize {
+    max-width: 65%;
+    max-height: 250px;
+    margin: 0 auto;
+  }
+
+  .emojisize{
+    img {
+     display: block;
+     width: auto;
+     float: left;
+   }
+ }
+  
+  .video-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+  }
+  .play, .pause{
+    background:rgba(0,0,0,0.7);
+    border:0px;
+    color:#fff;
+    border-radius: 100%;
+    height:40px;
+    width:40px;
+  }
+
+  ion-footer {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.11);
+    background-color: #fff;
+    //height: 255px;
+  }
+
+  .line-breaker {
+    white-space: pre-line;
+    width: 120px;
+  }
+
+  .input-wrap {
+    padding: 0 5px;
+    ion-textarea {
+      position: static;
+
+    }
+    ion-col.col {
+      padding: 0;
+    }
+    button {
+      width: 100%;
+      height: 55px;
+      font-size: 1.3em;
+      margin: 0;
+    }
+    textarea {
+      border-bottom: 1px #EB6640;
+      border-style: solid;
+    }
+  }
+  .list-md {
+    margin: -1px 0 10px 0;
+  }
+  .label-md {
+    margin: 0px 0px 0px 0;
+  }
+  .label-ios{
+    margin: 0px 0px 0px 0;
+  }
+  .item-md{
+    padding-left: 8px;
+  }
+
+  .commentContent{
+    .card-md {
+      //border-bottom: 1px lightgray solid;
+      border-radius: 2px;
+      font-size: 1.4rem;
+      background: #fff;
+      -webkit-box-shadow: 0;
+      box-shadow: 0 !important;
+    }
+  }
+
+  .container {
+    margin: 0px;
+    width: 100%;
+    //height: 220px;
+    line-height: 115px;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .resize_fit_center {
+      max-width:100%;
+      max-height:100%;
+      vertical-align: middle;
+  }
+  
+}

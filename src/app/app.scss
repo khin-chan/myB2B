@@ -1,0 +1,362 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.coutinueRead{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/*.card-content-md {
+  padding: 13px 16px;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}*/
+
+@mixin multiLineEllipsis($lineHeight: 1.6em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount;
+  //max-height: 3em;
+  //text-align: justify;
+  margin-right: -2em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    color: #ff934b;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 1em;
+    background: $bgColor;
+  }
+}
+
+.block-with-text {
+  @include multiLineEllipsis($lineHeight: 2em, $lineCount: 3, $bgColor: '');
+}
+
+
+.menu-header{
+  background-image:url('../assets/images/sidebar-profile-background.jpg') !important;
+  background-repeat:no-repeat;
+  background-size:cover;
+  overflow:hidden;
+  padding: 0px;
+  min-height: 150px;
+  object-fit: cover;
+}
+
+.imgresize {
+  height: 170px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 170px;
+  display: inline-block;
+  margin-right: auto;
+  object-fit: cover;
+  // margin-top: 10px;
+  }
+
+#notifications-badge {
+  position: absolute;
+  font-size: 12px;
+  top: -3px;
+  right: 1px;
+  padding:3px 5px;
+  background-color:#FE9A2E;
+  border-radius: 100%;
+}
+
+#notification-button {
+  position: relative;
+  width: 42px;
+  top:1px;
+  padding:0px;
+  right: 1px;
+  overflow: visible!important;
+}
+
+.menu-bottom {
+  bottom: 15px;
+  left: 13px;
+  right: 16px;
+  position: absolute;
+}
+
+.menu-text{
+  color: #60646B;
+  font-weight: 500;
+}
+
+.avatar, .item-avatar .avatar {
+  background-position: center center;
+  background-size: cover;
+  border-radius: 50%;
+  display: inline-block;
+  height: 66px;
+  left: 16px;
+  position: absolute;
+  width: 66px;
+  opacity: 1;
+  transform: translateZ(0px) rotate(0deg) scale(1) !important;
+  transition: all 0.3s ease-out 0s !important;
+  top: 20px;
+  left: 26px;
+  object-fit: cover;
+}
+
+.card-content-md {
+  padding: 13px 16px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.card-md p{
+  font-size: 1.6rem;
+}
+
+.card-md h2{
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.card-content-ios {
+  padding: 13px 16px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.card-ios p{
+  font-size: 1.6rem;
+}
+
+.card-ios h2{
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.col {
+  padding: 0px;
+}
+
+.card-title-md {
+  padding: 0px 0;
+}
+
+.item-md ion-icon[item-left] + .item-inner, .item-md ion-icon[item-left] + .item-input, .item-md ion-icon[item-start] + .item-inner, .item-md ion-icon[item-start] + .item-input {
+  margin-left: 7px;
+}
+
+
+.label-md {
+  margin: 13px 8px 13px 0;
+  font-family: Unicode;
+}
+
+super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button ion-icon {
+  font-size: 0px;
+}
+
+super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button {
+  font-family: Unicode;
+  text-transform: capitalize;
+}
+
+super-tabs-toolbar > ion-toolbar.toolbar .tab-buttons-container .tab-buttons super-tab-button.title-and-icon {
+  height: 56px;
+  padding-top: 0px;
+}
+
+.toolbar-md {
+  padding: 4px;
+  min-height: 50px;
+}
+
+.alert-md .alert-title {
+  font-size: 20px;
+  font-family: Unicode;
+}
+
+.alert-md .alert-radio-group, .alert-md .alert-checkbox-group {
+  position: relative;
+  overflow: auto;
+  max-height: 240px;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  font-family: Unicode;
+}
+
+.premiumStyle{
+  color: #ffffff;
+  padding: 3px 5px 0px 5px;
+  background-color: #de1f26;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.premiumTitle{
+  color: #ffffff;
+  padding: 5px 7px 5px 7px;
+  background-color: #de1f26;
+  font-size: 1.4rem;
+  border-radius: 5px;
+}
+
+.popUpStyle{
+  text-align: center;
+  line-height: 27px;
+}
+
+.premiumsubTitle{
+  font-weight: 600;
+}
+
+.premiumsubBody{
+  font-family: Unicode;
+}
+
+.price{
+  width: 65px;
+  display: inline-block;
+  text-align: right;
+  margin: 0;
+  font-family: Unicode;
+}
+
+.price1{
+  font-family: Unicode;
+}
+
+// .price{
+//   width: 40px;
+//   display: inline-block;
+//   text-align: right;
+//   margin: 0;
+// }
+
+.month{
+   width: 10px;
+   display: inline-block;
+   text-align: right;
+   margin: 0;
+   font-family: Unicode;
+}
+
+.month1{
+   width: 36px;
+   display: inline-block;
+   text-align: left;
+   margin: 0;
+   padding-left: 7px;
+   font-family: Unicode;
+}
+
+ion-textarea {
+  position: relative;
+  display: unset;
+}
+
+.alert-md .alert-head {
+   text-align: start;
+   padding: 20px 24px 20px;
+   overflow: scroll;
+}
+
+.alert-md .alert-message {
+   max-height: 240px;
+   font-size: 15px;
+}
+
+.deleteComment {
+   font-size: 20px !important;
+}
+
+.deleteCommentButton {
+   margin-left: 80px !important;
+   font-size: 16px !important;
+}
+
+.deleteCommentButton1 {
+   font-size: 16px !important;
+}
+
+.alertButton {
+   padding: 1px 10px 10px 10px !important;
+   font-size: 16px;
+}
+
+.buttoncss{
+   background-color: #488aff !important;
+   color: #fff !important;
+   justify-content: center !important;
+   border-radius: 5px !important;
+   font-size: 14px !important;
+   padding: 10px 35px 10px 35px !important;
+}
+
+.alert-md .alert-wrapper {
+   border-radius: 2px;
+   max-width: 340px;
+}
+
+.alert-md .alert-button-group {
+   justify-content: center;
+   padding: 20px 8px 25px 25px;
+}
+
+.alert-md .alert-button{
+   padding: 0px 10px;
+   font-size: 15px;
+}
+
+.newVersiontitle {
+   margin: 10px 0px 10px 0px !important;
+}
+
+.newVersionbutton{
+   padding: 0px 25px 0px 25px !important;
+}
+
+.sessionalert{
+   max-width: 230px !important;
+}
+  
+    
+  
+
+   
+
+
+  
+  
+  
+
+  
+ 
+
+

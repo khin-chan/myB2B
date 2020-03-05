@@ -1,0 +1,136 @@
+<!--
+  Generated template for the RegistrationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<!--<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      <img src="assets/images/B2B_LOGO.gif"  style=" width:65px;height:50px;" />
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="bounceInUp" style="padding:0px;">
+    <img src="assets/images/dd1.jpg" class="resize" style="width:100%;">
+  </div>
+
+  <ion-row style="padding-top:50px;">
+    <ion-col>
+      <div align="center">
+        <button ion-fab class="bounceInLeft" (click)="accountLogin()" style="border-color:#0474bc;border-width:1px;border-style:solid;background:#fff"><ion-icon name="logo-facebook"></ion-icon>
+        </button>
+        <div style="padding:10px;">START</div>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div align="center">
+
+        <ion-fab style="margin-left: -28px;">
+          <button class="bounceInLeft1" ion-fab style="background:lightcoral "><ion-icon name="add"></ion-icon></button>
+          <ion-fab-list style="margin: 75px 3px;" side="top">
+            <button ion-fab style="background:lightcoral "><ion-icon name="logo-vimeo"></ion-icon></button>
+          </ion-fab-list>
+          <ion-fab-list side="bottom"style="margin:40px -60px;">
+            <button ion-fab style="background:lightcoral "><ion-icon name="logo-googleplus"></ion-icon></button>
+          </ion-fab-list>
+          <ion-fab-list side="left" style="margin:-30px 80px;">
+            <button ion-fab style="background:lightcoral "><ion-icon name="logo-twitter"></ion-icon></button>
+          </ion-fab-list>
+          <ion-fab-list side="bottom" style="margin:80px 3px;">
+            <button ion-fab style="background:lightcoral "><ion-icon name="logo-facebook"></ion-icon></button>
+          </ion-fab-list>
+        </ion-fab>
+        <div style="padding:10px;padding-top:67px;">MORE</div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <div style="position: absolute; bottom: 5px;color: #f7941e;padding: 16px 0px;width:100%;" align="center">
+    <p>Version {{version}}</p>
+    <span style="font-size: 11px;">Powered by MIT</span>
+  </div>
+</ion-content> -->
+
+<!-- <ion-header no-border>
+ <ion-navbar transparent
+    style="background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%, rgba(255, 255, 0, 0.2) 100%, rgba(0, 255, 255, 0) 100%);">
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content class="reg-content" padding>
+
+  <div id="welcome" style="vertical-align: middle;text-align: center;margin-top: 50px;">
+    <img src="assets/images/admin.png" class="logo" />
+    <ion-grid style="margin-top: 45px;margin-bottom: 35px;">
+      <ion-row>
+        <ion-col>
+          <h2 style="color: #000;font-weight:bold;font-size: 2.2rem;" class="{{txtfont}}">
+            {{textResult[0]}}</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <form>
+    <ion-row>
+      <ion-col>
+        <h3
+          style="color: #404141;font-size: 16px;margin-bottom: 15px;font-weight: 500;width: 61%;line-height: 25px;margin-left: 20%;"
+          class="{{txtfont}}">
+          {{textResult[1]}}</h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row  style="margin-bottom: 40px;">
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn" full (click)="accountLogin()" icon-left>
+          Register Now
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h3 style="color: #404141;font-size: 16px;margin-bottom: 15px;font-weight:500;" class="{{txtfont}}">
+          {{textResult[2]}}</h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn1" full (click)="OnLogin()">
+          <img src="assets/images/book1.png" style="width: 18px;object-fit: cover;margin-right: 5px;">
+          LogIn
+        </button>
+      </ion-col>
+    </ion-row>
+
+<!--     <div style="position: absolute; bottom: 10px; color:#4f4f4f;width:91%;">
+      <ion-row>
+        <ion-col>
+          <span style="font-size: 15px;text-transform: uppercase;font-weight: bold;">Powered by MIT</span>
+        </ion-col>
+      </ion-row>
+    </div> -->
+
+  </form>
+</ion-content>
+
+<ion-footer style="bottom: 10px;">
+  <ion-row>
+    <ion-col style="text-align: center;">
+      <span style="font-size: 15px;text-transform: uppercase;font-weight: bold;">Powered by MIT</span>
+    </ion-col>
+  </ion-row>
+</ion-footer>

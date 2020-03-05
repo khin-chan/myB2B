@@ -1,0 +1,120 @@
+<!--
+  Generated template for the ReplyCommentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="b2b">
+    <ion-buttons left *ngIf="status ==1">
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="md-arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title><span class="{{font}}">{{textData[0]}}</span></ion-title>
+    <ion-buttons end style="padding-left:5px;">
+      <button ion-button icon-only (click)="changelanfont()">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div style="padding-top: 5px;" *ngIf="isLoading">
+    <div align="center">
+      <ion-spinner name="circles"></ion-spinner>
+    </div>
+  </div>
+
+  <div>
+    <!--  <ion-item no-lines>
+      <div style="float: left;padding-top: 10px ;">
+        <img item-left src="{{photoLink}}/{{passData.userPhoto}}" class="imgaemargin" *ngIf="passData.userPhoto!= '' && passData.userPhoto !=null && passData.userPhoto != 'user-icon.png'" style="width:45px;height: 45px;border-radius: 50%;object-fit:cover;margin-right: 0px;" onError="this.src = 'assets/images/user-icon.png'">
+        <text-avatar [text]="passData.name" item-left *ngIf="passData.name !='' && (passData.userPhoto == '' || passData.userPhoto ==null || passData.userPhoto == 'user-icon.png')"></text-avatar>
+        <text-avatar text="B2B" item-left *ngIf="passData.name =='' && (passData.userPhoto == '' || passData.userPhoto ==null || passData.userPhoto == 'user-icon.png')"></text-avatar>
+      </div>
+      <div style="float: left;width:81%;padding: 8px 0px 0px 8px;">
+      <h4 style="font-weight: bold;margin-top: 5px;" class="{{font}}" *ngIf="passData.name">{{passData.name}}</h4>
+       <h4 style="font-weight: bold;margin-top: 5px;" class="{{font}}" *ngIf="passData.name==''">B2B User</h4>
+      <p text-wrap style="color: #000000;line-height: 16px;font-size:1.3rem;" class="{{font}}">{{passData.t2}}</p>
+  
+      <p style="font-size:1.2rem;">
+        <span *ngIf="passData.time == ' W'" style="color: #b1a7a7;">{{passData.date}} </span>
+        <span *ngIf="passData.time != ' W'" style="color: #b1a7a7;">{{passData.time}}</span>
+      </p>      
+     </div> 
+     </ion-item>  -->
+    <ion-list style="padding-left:8px;" *ngIf="nores == 1">
+      <ion-item *ngFor="let cmt of replyData;let j = index" no-lines (press)="presentPopover($event,cmt)" style="padding-left: 0px;">
+        <div style="float: left;padding-top: 10px ;">
+          <img item-left src="{{photoLink}}/{{cmt.t10}}" *ngIf="cmt.t10 != '' && cmt.t10 !=null &&  cmt.t10 != 'user-icon.png'"
+            style="width:40px;height: 40px;border-radius: 50%;object-fit:cover;margin-right: 0px;" onError="this.src = 'assets/images/user-icon.png'">
+          <text-avatar [text]="cmt.userName" item-left *ngIf="cmt.userName !='' && (cmt.t10 == '' || cmt.t10 ==null ||  cmt.t10 == 'user-icon.png')"></text-avatar>
+          <text-avatar text="B2B" item-left *ngIf="cmt.userName =='' && (cmt.t10 == '' || cmt.t10 ==null || cmt.t10 == 'user-icon.png')"></text-avatar>
+        </div>
+        <div style="float: left;width:80.7%;padding:8px 0px 0px 8px;">
+          <h2 style="font-weight: bold;margin-top: 10px;font-size:1.4rem;" class="{{font}}" *ngIf="cmt.userName">{{cmt.userName}}</h2>
+          <h2 style="font-weight: bold;margin-top: 10px;font-size:1.4rem;" class="{{font}}" *ngIf="cmt.userName == ''">B2B
+            User</h2>
+          <p text-wrap style="color: #000000;line-height: 16px;font-size:1.3rem;" class="{{font}}">{{cmt.t2}}</p>
+          <p style="font-size:1.2rem;">
+            <span *ngIf="cmt.differenceTime == ' W'" style="color: #b1a7a7;">{{cmt.modifiedDate}} </span>
+            <span *ngIf="cmt.differenceTime != ' W'" style="color: #b1a7a7;">{{cmt.differenceTime}}</span>
+          </p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="status">
+    <ion-row>
+      <ion-col col-3>
+        <div style="color:#808080;" align="right">Sending</div>
+      </ion-col>
+      <ion-col>
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!--<div *ngIf="nores == 0" align="center">
+    <h3 style="padding:50px;color:#ccc;font-size:1.8rem;"> <span class="{{font}}">{{textData[1]}}</span></h3>
+  </div>-->
+</ion-content>
+
+<!--<ion-footer no-border *ngIf="!singleStatus">
+  <ion-grid class="input-wrap">
+    <ion-row>
+      <ion-col col-10>
+        <ion-textarea
+          class="{{textFont}}"
+          placeholder="{{textData[2]}}"
+          [(ngModel)]="comment"
+          (focus)="onFocus()">
+        </ion-textarea>
+      </ion-col>
+      <ion-col col-2>
+        <button ion-button clear icon-only item-right (click)="saveCommentReply()">
+          <ion-icon name="ios-send" ios="ios-send" md="md-send" style="color: #EB6640;"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>-->
+
+<ion-footer no-border>
+  <ion-row style="margin-top:6px">
+    <ion-col col-10 style="padding-left:8px">
+      <ion-input class="{{textFont}}" placeholder="{{textData[2]}}..." [(ngModel)]="comment" (keyup.enter)="saveCommentReply()"
+        (focus)="onFocus()">
+      </ion-input>
+    </ion-col>
+    <ion-col col-2 style="text-align:right">
+      <button ion-button clear icon-only item-right (click)="saveCommentReply()">
+        <ion-icon name="ios-send" ios="ios-send" md="md-send" style="color: #EB6640;"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

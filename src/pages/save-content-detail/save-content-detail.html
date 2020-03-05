@@ -1,0 +1,57 @@
+<!--
+  Generated template for the HomeDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-title><span class="{{font}}">{{textData[0]}}</span></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background: #dddddd;">
+  <ion-card style="margin: 0px 0px 8px 0px !important; width: 100% !important;">
+    <ion-item>
+      <img item-left src="{{writerImg}}/{{registerData.perData.t16}}" *ngIf="registerData.perData.t16 != '' && registerData.perData.t16 !=null " (click)="writerProfile(registerData.perData)" onError="this.src = 'assets/images/user-icon.png'" style="width:48px;height: 48px;border-radius: 50%;object-fit: cover;">
+        <text-avatar [text]="registerData.perData.t2" item-left *ngIf="registerData.perData.t16 == '' || registerData.perData.t16 ==null " (click)="writerProfile(registerData.perData)"></text-avatar>
+      <ion-row>
+          <ion-col style="text-align: left;">
+              <h2 style="font-weight: bold;" class="{{font}}" (click)="writerProfile(registerData.perData)">{{registerData.perData.t2}}</h2>
+              <p style="padding-left: 0px;font-size:1.2rem;color: #808080;" (click)="writerProfile(registerData.perData)">{{ registerData.modifiedDate}} </p>
+          </ion-col>
+          <ion-col style="text-align: right;">
+            <span *ngIf=" registerData.t3 == 'premium'" class="premiumStyle">PREMIUM</span>
+            <ion-note item-end>
+                <button ion-button clear icon-right (click)="clickBookMark(registerData.showContent)" style="padding-left: 0px;padding-right: 0px;">
+                  <ion-icon *ngIf="registerData.showContent" name="ios-bookmark" style="color: #0474bc;" ></ion-icon>
+                  <ion-icon *ngIf="!registerData.showContent" name="ios-bookmark" style="color: #bbb;" ></ion-icon>
+                </button>
+              </ion-note>
+          </ion-col>
+        </ion-row>
+    </ion-item>
+    <hr style=" display: block; margin: 0px 3px 0px 3px; border: none; background-color: lightgrey">
+    <div>
+      <h2 class="{{font}}" style="padding: 7px 0px 0px 15px;font-weight:bold;">{{registerData.t5}}</h2>
+    </div>
+    <ion-card-content>
+      <div class="{{font}}">
+          <div *ngFor="let i of array1">
+            <p [innerHTML]="i.t2" *ngIf="i.t1 == 'text'" class="emojisize"></p>
+            <div class="container" *ngIf="!registerData.t8 && !registerData.videoStatus">
+              <img [src]="i.t2" *ngIf="i.t1 == 'img'" onError="this.src = 'assets/images/imgErr.png'" (click)="singlePhoto(i.t2)" class="resize_fit_center">
+              <h3 style="font-weight: bold;padding-top: 10px;font-size: 1.5rem">{{i.caption}}</h3>
+            </div> 
+          </div>
+      </div>
+      <div class="video-container" *ngIf="registerData.t8 || registerData.videoStatus" (click)="goDetail(registerData)">
+        <img id="projectplayer" src="{{registerData.videoLink}}" onError="this.src = 'assets/images/imgErr.png'" class="resize_fit_center"/>
+        <button class="play" style="position: absolute;right: 45%;bottom: 40%;" ><ion-icon name="play"></ion-icon></button>
+      </div>   
+    </ion-card-content>
+  </ion-card>
+</ion-content>

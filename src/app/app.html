@@ -1,0 +1,66 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar style="padding:0px;">
+      <div class="menu-header">
+        <ion-row>
+          <ion-col>
+            <img src="{{userimage}}" class="avatar motion spin fade" (click)="edit()" menuClose
+              onError="this.src = 'assets/images/user-icon.png'"
+              style="height:80px;width:80px;object-fit: cover;margin-left: -12px;">
+          </ion-col>
+
+          <ion-col col-8 (click)="edit()" menuClose tappable style="padding-top: 19px;padding-left: 3px;">
+            <div style="padding:7px 0px 0px 3px;color:#ffffff;" class="{{font}}">
+              <span style="font-size: 1.7rem;font-weight: 600;"> {{name}} </span>
+            </div>
+            <div style="padding-left:3px; padding-bottom: 4px;color:#ffffff;">
+              <span style="font-size: 1.4rem;"> {{phone}} </span>
+            </div>
+            <div style="padding-left:3px;color:#ffffff;float: left;">
+              <span style="font-size: 1.4rem"> Edit Profile </span>
+            </div>
+            <div>
+              <button ion-button clear item-end style="margin-top: -9px;font-size: 1.4rem;color: #fff;">
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+        <div class="menu-bottom">
+          <ion-row>
+            <ion-col col-6 style="padding-top: 20px;">
+              <div *ngIf="premiumUser" align="center" menuClose style="padding-top:24px;float: left;margin-left: 5px;">
+                <span *ngIf="premiumUser" style="color:#de1f26; padding: 5px 5px 4px 5px; background-color: #ffffff; font-size: 12px; border-radius: 5px;">
+                  PREMIUM USER </span>
+              </div>
+            </ion-col>
+            <!--           <ion-col col-6 style="padding-top: 20px;">
+              <div align="center" menuClose (click)="edit()"
+                style="padding-top: 19px; margin-right: 4px; float: right;">
+                <button ion-button style="background-color: #ffffff;border-radius: 50px;height: 20px;">
+                  <span style="color:#de1f26;text-transform: none; font-weight: 400;font-size: 12px;"> Edit </span>
+                </button>
+              </div>
+            </ion-col> -->
+          </ion-row>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item menuClose *ngFor="let p of pages; let k = index" (click)="openPage(p)" color="{{p.color}}">
+        <ion-icon [name]="p.icon" item-left style="color:#f53d3d;" *ngIf="p.icon !=''"></ion-icon>
+        <img item-left [src]="p.img" *ngIf="p.icon == ''" style="width: 30px;object-fit: cover;">
+        <span class="menu-text {{font}}">{{p.title}}</span>
+        <ion-badge style="background-color:#2DC70D;float:right;" *ngIf="p.noti > 0">{{p.noti}}</ion-badge>
+        <!--  *ngIf="index == 7 "&& notiCount > 0 {{noticount}} padding:5px 8px 5px 8px; border-radius: 100%;-->
+        <!--<ion-badge style="background-color:#2DC70D;float:right;" *ngIf="k == 13 && noticount > 0" >{{noticount}}</ion-badge>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-title>
+      <span class="{{font}}"> {{headeritem}}</span>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content >
+  <ion-list radio-group [(ngModel)]="font">
+    <ion-item *ngFor="let item of popoverItemList">
+      <ion-label ><span class="{{font}}"> {{item.name}}</span></ion-label>
+      <ion-radio value="{{item.key}}" (ionSelect)="getLanguage(item.key)"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

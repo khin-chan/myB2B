@@ -1,0 +1,21 @@
+<!--
+  Generated template for the EditPhotoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--  <ion-content>
+  <ion-list style="margin-bottom:0px;" *ngIf="show=='yes'">
+    <ion-item no-lines *ngFor="let d of popoverItemList" tappable (click)="getAccess(d.key)" style="color:#6c6666" class="{{showFont}}">
+      <span class="uni">{{d.name}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content> -->   
+  
+<ion-content>
+  <ion-list style="margin-bottom:0px;">
+    <ion-item no-lines *ngFor="let d of popoverItemList" (click)="getAccess(d.key)" style="color:#6c6666">
+      {{d.name}}
+    </ion-item>
+  </ion-list>
+</ion-content>

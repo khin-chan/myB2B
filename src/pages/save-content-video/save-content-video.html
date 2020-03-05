@@ -1,0 +1,64 @@
+<!--
+  Generated template for the SaveContentVideoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+<ion-navbar transparent style="background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.0) 100%, rgba(0, 0, 0, 0.1) 100%);">
+  <ion-title *ngIf="onscroll"><span style="color: white;">{{moreVdo}}</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: black;" fullscreen>
+  <div style="margin-top:30px;">
+      <ion-card [ngStyle]="{'background-color': buttonColor}" style="margin: 0px 0px 13px 0px !important; width: 100% !important;">
+        <ion-item style="padding-left: 10px;height: 50px; background-color: black;">
+          <img item-left src="{{writerImg}}/{{passData.perData.t16}}" *ngIf="passData.perData.t16 != '' && passData.perData.t16 !=null" (click)="writerProfile(passData.perData)" onError="this.src = 'assets/images/user-icon.png'" style="width:48px;height: 48px;border-radius: 50%;object-fit: cover;">
+          <text-avatar [text]="passData.perData.t2" item-left *ngIf="passData.perData.t16 == '' || passData.perData.t16 ==null " (click)="writerProfile(passData.perData)"></text-avatar>
+          <ion-row>
+              <ion-col style="text-align: left;">
+                  <h2 style="font-weight: bold;color: #808080;" class="{{font}}" (click)="writerProfile(passData.perData)">{{passData.perData.t2}}</h2>
+                  <p style="padding-left: 0px;font-size:1.2rem;color: #808080;" (click)="writerProfile(passData.perData)">{{passData.modifiedDate}}</p>
+              </ion-col>
+              <ion-col style="text-align: right;">
+                <span *ngIf=" passData.t3 == 'premium'" class="premiumStyle">PREMIUM</span>
+                <ion-note item-end>
+                    <button ion-button clear icon-right (click)="clickBookMark(passData)" style="padding-left: 0px;padding-right: 0px;">
+                      <ion-icon *ngIf="passData.showContent" name="ios-bookmark" style="color: #0474bc;" ></ion-icon>
+                      <ion-icon *ngIf="!passData.showContent" name="ios-bookmark" style="color: #bbb;" ></ion-icon>
+                    </button>
+                  </ion-note> 
+              </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-card-content style="background-color: black;padding: 10px 5px 0px 5px;" >
+          <div class="video-container" *ngIf="passData.n10 != 2">
+            <video #videoPlayer controls="controls" id="video" controlsList="nodownload" poster="{{passData.videoLink}}" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer" style="width: 100%;">
+              <source src="{{ulink}}" type="video/mp4">
+            </video>
+          </div>
+          <div  *ngIf="passData.n10 == 2">  <!-- style="heigth: 315px;" preload="metadata" -->
+            <iframe  #videoPlayer width="100%" height="315px" data-layout="default" [src]="ulink" allow="autoplay; encrypted-media" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>            
+          </div>
+        </ion-card-content>        
+        <!--<ion-row style="margin-top: 20px;">
+          <ion-col text-center style="padding: 0px;">
+            <button ion-button clear icon-right style="padding: 0px;" (click)="clickLike(passData)">
+              <ion-icon *ngIf="passData.showLike" name="ios-thumbs-up" style="color: #0474bc;" ></ion-icon>
+              <ion-icon *ngIf="!passData.showLike" name="ios-thumbs-up" style="color: white;" ></ion-icon>
+              <span *ngIf="passData.showLike" style="text-transform: none; color:#0474bc; padding: 5px 0px 0px 5px;font-size: small;" class="{{font}}">{{textData[1]}}</span>
+              <span *ngIf="!passData.showLike " style="text-transform: none; color:white; padding: 5px 0px 0px 5px;font-size: small;" class="{{font}}">{{textData[1]}}</span>
+            </button>
+          </ion-col>
+          <ion-col text-center style="padding: 0px;">
+            <button ion-button clear icon-left (click)="share(passData)" style="padding: 0px;">
+              <ion-icon name="ios-share-alt" style="color: white"></ion-icon>
+              <span style="text-transform: none; color: white;font-size: small;" class="{{font}}">{{textData[3]}}</span>
+            </button>
+          </ion-col>
+        </ion-row>-->
+      </ion-card>
+    </div>
+</ion-content>
+

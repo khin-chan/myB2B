@@ -1,0 +1,55 @@
+page-payment {
+   
+    .content-md {
+        color: #000;
+        background-color: #313131;
+    }
+
+    #welcome{
+        .marginTop{
+          margin-top:150px;
+        }
+        .logo{
+          height: 100px;
+        }
+      }
+
+    .item-md {
+        background-color: #313131;
+      }
+
+  .checkbox-md .checkbox-icon {
+    width: 22px;
+    height: 22px;
+    border-width: 5px;
+    border-radius: 50px;
+    border-color: #fff;
+  }
+
+  .checkbox-md .checkbox-checked .checkbox-inner {
+    left: 4px;
+    top: 0;
+    position: absolute;
+    width: 5px;
+    height: 10px;
+    border-width: 2px;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-style: solid;
+    border-color: red;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkbox-md .checkbox-checked {
+  border-color: #fff;
+  background-color: #fff;
+}
+
+.signup-col {
+  margin: 0px 16px 0px 16px;
+  padding-bottom: 20px;
+}
+
+
+}

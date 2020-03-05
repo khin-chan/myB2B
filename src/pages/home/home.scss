@@ -1,0 +1,200 @@
+page-home {
+
+  /*ion-content {
+    .scroll-content, .fixed-content {
+      margin-top: 56px;
+      margin-bottom: 0 !important;
+    }
+  }*/
+
+  /*.loadingColor{
+    color:  #EB6944;
+  }
+  .segment-md .segment-button ion-icon {
+    padding-top:3px;
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  .segment-md .segment-button {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding: 0 0;
+    width: 0;
+    // height: 4.2rem;
+    height: 59px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 2rem;
+    text-transform: uppercase;
+    color: #A9A9A9;
+    background-color: #fff;
+    opacity: 0.7;
+    transition: 100ms all linear;
+  }
+  .searchbar-md .searchbar-input {
+    padding: 0px 55px 0px 55px;
+    border-radius: 2px;
+    background-position: left 8px center;
+    height: auto;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 3rem;
+    background-color: #e21018;
+    //-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.14), 0 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+  }
+  .searchbar-md .searchbar-search-icon {
+    left: 16px;
+    top: 4px;
+    //background-image: url(data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%…84,98.462,98.742C304.687,261.485,260.925,305.372,206.225,305.372z'/></svg>);
+    width: 21px;
+    height: 21px;
+  }*/
+  ion-content{
+    .scroll-content{
+      overflow: overlay;
+    }
+  }
+
+  /*ion-refresher.refresher-active{
+    background: transparent linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(158, 158, 158, 0.1) 100%, rgba(158, 158, 158, 0.2) 100%, rgba(0, 255, 255, 0) 100%);
+  }*/
+
+  .resize {
+    height: 170px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 170px;
+    display: inline-block;
+    margin-right: auto;
+    object-fit: cover;
+    }
+    .resizegrid {
+    height: 140px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 140px;
+    display: inline-block;
+    margin-right: auto;
+    object-fit: cover;
+    // margin-top: 10px;
+    }
+
+/*.my-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 20;
+    top: 0;
+    left: 0;
+  }*/
+  .emojisize{
+     img {
+      display: block;
+      width: auto;
+      float: left;
+    }
+  }
+
+  .positioner {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .icscon {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .icscon1 {
+    position: absolute;
+    right: -38px;
+    bottom: -15px;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .video-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .video-container iframe, .video-container object, .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .btn-group{
+    position: absolute;
+    right: 140px;
+    bottom: 70px;
+  }
+  
+  .play, .pause{
+    background:rgba(0,0,0,0.7);
+    border:0px;
+    color:#fff;
+    border-radius: 100%;
+    height:40px;
+    width:40px;
+  }
+  
+  /*.fab[mini] {
+    margin: 8px;
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+  }
+
+  ion-fab[top] {
+    top: 0px;
+  }*/
+  .price{
+    width: 60px;
+    display: inline-block;
+    text-align: right;
+    margin: 0;
+  }
+
+  [ion-fixed]{
+    position: relative;
+  }
+
+  .container{
+    margin: 0px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .resize_fit_center {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+  }  
+
+}

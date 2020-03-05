@@ -1,0 +1,48 @@
+page-view-photo-message {
+
+  .my-overlay {
+    position: fixed;
+    width: 100%;
+    height: initial;
+    background: rgba(0,0,0,0.7);
+    z-index: 20;
+    bottom: 0;
+    left: 0;
+    font-family: 'tahoma';
+    font-size:15px;
+    color: white;
+    padding: 8px;
+  }
+
+  .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    color: #f3ecec;
+  }
+
+  .vertical-align-content > *
+  {
+    display: flex!important;
+    align-content: center!important;
+    align-items: center!important;
+    background-color: rgba(0,0,0,0.7);
+  }
+
+  .scroll-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    contain: size style layout;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+}

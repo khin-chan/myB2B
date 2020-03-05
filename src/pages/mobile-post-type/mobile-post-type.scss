@@ -1,0 +1,36 @@
+page-mobile-post-type {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 40%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .scroll-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+    contain: size style layout;
+  }
+ 
+}
+
+

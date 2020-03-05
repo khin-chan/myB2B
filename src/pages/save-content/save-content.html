@@ -1,0 +1,206 @@
+<!--
+  Generated template for the SaveContentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+      <!--<span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;" *ngIf="noticount > 0 || notiStatus"></span>-->
+      <span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;" *ngIf=" notiStatus"></span>
+    </button>
+    <ion-title><span class="{{font}}">{{textData[0]}}</span></ion-title>
+    <!--<ion-buttons end style="padding-left:15px;">
+      <button ion-button icon-only (click)="goNotiList()">
+        <ion-icon name="ios-notifications"></ion-icon>
+      </button>
+    </ion-buttons>-->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div ion-fixed style="padding-top: 10px;" *ngIf="isLoading">
+    <div align="center" ><ion-spinner name="circles" style="color: #EB6944;background-color: white;border-radius: 50%;"></ion-spinner></div>
+  </div>    
+  <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!isLoading">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="nores == 1 " style="background: #dddddd;">
+    <ion-card style="margin: 0px 0px 8px 0px !important; width: 100% !important;" *ngFor="let i of menuList; let k = index">
+
+      <ion-item>
+        <img item-left src="{{writerImg}}/{{i.perData.t16}}" *ngIf="i.perData.t16 != '' && i.perData.t16 != null" (click)="writerProfile(i)" onError="this.src = 'assets/images/user-icon.png'" style="width:48px;height: 48px;border-radius: 50%;object-fit: cover;">
+        <text-avatar [text]="i.perData.t2" item-left *ngIf="i.perData.t16 == '' || i.perData.t16 == null " (click)="writerProfile(i)"></text-avatar>
+        <ion-row>
+            <ion-col style="text-align: left;">
+                <h2 style="font-weight: bold;" class="{{font}}" (click)="writerProfile(i)">{{i.perData.t2}}</h2>
+                <p style="padding-left: 0px;font-size:1.2rem;color: #808080;" (click)="writerProfile(i)">{{ i.modifiedDate}}</p>
+            </ion-col>
+            <ion-col style="text-align: right;">
+              <span *ngIf=" i.t3 == 'premium'" class="premiumStyle">PREMIUM</span>
+              <ion-note item-end>
+                  <button ion-button clear icon-right (click)="clickBookMark(i,k)" style="padding-left: 0px;padding-right: 0px;">
+                    <ion-icon *ngIf="i.showContent" name="ios-bookmark" style="color: #0474bc;" ></ion-icon>
+                    <ion-icon *ngIf="!i.showContent" name="ios-bookmark" style="color: #bbb;" ></ion-icon>
+                  </button>
+                </ion-note>
+            </ion-col>
+          </ion-row>
+      </ion-item>
+      <hr style=" display: block; margin: 0px 3px 0px 3px; border: none; background-color: lightgrey">
+
+      <div>
+        <h2 style="padding: 7px 0px 7px 15px;font-weight:bold;" class="{{font}}">{{i.t5}}</h2>
+      </div>
+      <ion-card-content style="padding: 0px 15px 0px 15px;">
+        <ion-card-title >
+          <p class="emojisize {{font}}" *ngIf="i.showread  == false" [innerHTML]="i.shMsg" (click)="continue(i)"></p>
+          <p class="block-with-text {{font}} emojisize" *ngIf="i.showread  == true" [innerHTML]="i.shMsg" (click)="continue(i)"></p>
+          <p *ngIf="i.showread" style="color: #ACA2A2;font-size:1.6rem;" (click)="continue(i)">Continue Reading</p>
+          <!-- Show video-->
+         <!-- <div align="right" *ngIf="i.t8">
+            <button ion-button item-end color="danger"  (click) = "goVideoDetail(i.t8)">
+              <span class="{{font}}">
+                {{textData[5]}}
+              </span>
+            </button>
+          </div>
+          <div class="video-container" *ngIf="i.t8">
+            <iframe [src]="i.t8" frameborder="0" width="560" height="315" webkitallowfullscreen mozallowfullscreen allowfullscreen *ngIf="nores == 1"></iframe>
+            <div style="border: 1px darkgray solid; height: 180px; width: 100%;text-align: center;padding-top: 80px;"  *ngIf="nores == 0">
+              <h4 style="color:#ccc;">No Internet Connection </h4>
+            </div>
+          </div>-->
+
+          <div class="video-container" (click)="goVideoDetail(i)" *ngIf="(i.t8 || i.videoStatus) && nores == 1">
+            <img id="projectplayer" src="{{i.videoLink}}" onError="this.src = 'assets/images/imgErr.png'" class="resize_fit_center" />
+            <button class="play" style="position: absolute;right: 45%;bottom: 40%;"><ion-icon name="play"></ion-icon></button>
+          </div>
+          <div class="video-container" *ngIf="(i.t8 || i.videoStatus) && nores == 0">
+            <div style="border: 1px darkgray solid; height: 180px; width: 100%;text-align: center;padding-top: 80px;">
+              <h4 style="color:#ccc;">No Internet Connection </h4>
+            </div>
+          </div>
+
+          <!-- Show video-->
+        </ion-card-title>
+      </ion-card-content>
+      <div *ngIf="!i.t8 && !i.videoStatus">
+        <div class="container" *ngIf="i.uploadedPhoto.length > 0; let id = index"  (click)="continue(i)" style="padding-bottom: 5px;">
+          <img src="{{photoLink}}{{i.uploadedPhoto[0].t7}}" class="resize_fit_center" onError="this.src = 'assets/images/imgErr.png'">
+        </div>
+
+        <!--<div *ngIf="i.uploadedPhoto.length == 2; let id = index"  (click)="continue(i)">
+          <ion-row>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[0].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col>
+              <img src="{{photoLink}}{{i.uploadedPhoto[1].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div *ngIf="i.uploadedPhoto.length == 3; let id = index"  (click)="continue(i)">
+          <ion-row>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[0].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col>
+              <img src="{{photoLink}}{{i.uploadedPhoto[1].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: -5px;">
+            <ion-col>
+                <img src="{{photoLink}}{{i.uploadedPhoto[2].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div *ngIf="i.uploadedPhoto.length == 4; let id = index"  (click)="continue(i)">
+          <ion-row>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[0].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col >
+              <img src="{{photoLink}}{{i.uploadedPhoto[1].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: -5px;">
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[2].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col>
+              <img src="{{photoLink}}{{i.uploadedPhoto[3].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+        </div>
+        <div *ngIf="i.uploadedPhoto.length == 5; let id = index"  (click)="continue(i)">
+          <ion-row>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[0].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col >
+              <img src="{{photoLink}}{{i.uploadedPhoto[1].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: -5px;">
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[2].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[3].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col>
+              <img src="{{photoLink}}{{i.uploadedPhoto[4].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div *ngIf="i.uploadedPhoto.length > 5; let id = index" >
+          <ion-row>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[0].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col>
+              <img src="{{photoLink}}{{i.uploadedPhoto[1].t7}}" class="resize" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: -5px;">
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[2].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col style="padding-right: 3px;">
+              <img src="{{photoLink}}{{i.uploadedPhoto[3].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+            </ion-col>
+            <ion-col (click)="continue(i)">
+              <img src="{{photoLink}}{{i.uploadedPhoto[4].t7}}" class="resizegrid" onError="this.src = 'assets/images/imgErr.png'">
+              <div class="my-overlay">
+                <div class="positioner">
+                  <ion-icon class="icscon" name="ios-add" style="font-weight:bold;font-size: 27px;color: #fff;"></ion-icon>
+                  <span class="icscon1">{{i.uploadedPhoto.length - 5}}</span>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>-->
+      </div>
+      <!-- Show photo-->
+    </ion-card>
+  </div>
+  <h3 style="padding:50px;color:#ccc;font-size:1.9rem;" *ngIf="nores == 0" align="center"> <span class="{{font}}">{{textData[4]}}</span></h3>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!isLoading">
+    <ion-infinite-scroll-content loadingSpinner="circles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

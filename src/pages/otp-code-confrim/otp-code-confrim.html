@@ -1,0 +1,77 @@
+<!--
+  Generated template for the OtpCodeConfrimPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+  <ion-navbar transparent
+    style="background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%, rgba(255, 255, 0, 0.2) 100%, rgba(0, 255, 255, 0) 100%);">
+    <ion-title> </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="register-content" padding>
+  <div id="welcome" style="vertical-align: middle;text-align: center;margin-top: 10%;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1 class="{{font}}">{{textData[0]}}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h3 class="{{font}}" style="color:#605f5f;text-align: center;font-size: 18px;"> {{phandemail}} </h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <form #registerForm="ngForm">
+
+    <ion-list inset>
+      <ion-row>
+        <ion-col col-1.5 class="otpbox">
+          <ion-input style="color:#000;" #a1 type="tel" maxlength="1" class="{{font}}" name="otp1" [(ngModel)]="otpcode1" (keyup)="onKeyUp($event,1)" required>
+          </ion-input>
+        </ion-col>
+        <ion-col col-1.5 class="otpbox">
+          <ion-input style="color:#000;" #a2 type="tel" maxlength="1" class="{{font}}" name="otp2" [(ngModel)]="otpcode2"  (keyup)="onKeyUp($event,2)" required> 
+          </ion-input>
+        </ion-col>
+        <ion-col col-1.5 class="otpbox">
+          <ion-input style="color:#000;" #a3 type="tel" maxlength="1" class="{{font}}" name="otp3" [(ngModel)]="otpcode3" (keyup)="onKeyUp($event,3)" required>
+          </ion-input>
+        </ion-col>
+        <ion-col col-1.5 class="otpbox">
+          <ion-input style="color:#000;" #a4 type="tel" maxlength="1" class="{{font}}" name="otp4" [(ngModel)]="otpcode4" (keyup)="onKeyUp($event,4)" required>
+          </ion-input>
+        </ion-col>
+        <ion-col col-1.5 class="otpbox">
+          <ion-input style="color:#000;" #a5 type="tel" maxlength="1" class="{{font}}" name="otp5" [(ngModel)]="otpcode5" (keyup)="onKeyUp($event,5)" required>
+          </ion-input>
+        </ion-col>
+<!--         <ion-col col-1.5 class="otpbox">
+          <ion-input style="color:#000;" #a6 type="tel" maxlength="1" class="{{font}}" name="otp6" [(ngModel)]="otpcode6" (keyup)="onKeyUp($event,6)" required>
+          </ion-input>
+        </ion-col> -->
+      </ion-row>
+    </ion-list>
+
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn" full (click)="continueOtp()" [disabled]="!registerForm.form.valid">
+          <span style="color:#000; " class="{{font}}">{{textData[1]}}</span></button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button clear color="light" (click)="onResendOtp()">
+          <span style="color:#0c6db6;" class="{{font}}">{{textData[2]}}</span>
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header no-shadow no-border>
+  <ion-navbar color="b2b">
+    <button ion-button menuToggle color="yellow">
+      <ion-icon name="menu"></ion-icon>
+      <!--<span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;" *ngIf="noticount > 0 || notiStatus"></span>-->
+      <span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;"
+        *ngIf=" notiStatus"></span>
+    </button>
+    <ion-title><span class="{{font}}">B2B</span></ion-title>
+    <ion-buttons end style="margin-right: 15px;">
+      <button ion-button icon-only (click)="goFilter()">
+        <ion-icon name="ios-search" style="font-size: 26px;"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end style="padding-right: 7px;">
+      <button ion-button icon-only (click)="goNotiList()" style="margin-left: -15px;">
+        <span class="button-inner">
+          <ion-icon name="ios-notifications" style="font-size: 2.0em;"></ion-icon>
+          <ion-badge *ngIf="notiCount > 0" style="position: absolute;border-radius: 100%;margin-left: 6px;margin-top: -10px;color: #fff;background-color: #2DC70D;padding: 3px 5px 3px 5px;text-align: center;font-size:  0.8em;">
+            {{notiCount}}
+          </ion-badge>
+        </span>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div class="scroll-content" style=" margin-top: -90px;">
+    <super-tabs selectedTabIndex="0" toolbarColor="light" toolbarBackground="b2b" indicatorColor="light" badgeColor="danger" [config]="{ sideMenu: 'left' }" (tabSelect)="onTabSelect($event)">
+      <super-tab [root]="tab1Root" title={{textData[0]}} icon="ios-document" class="{{font}}"></super-tab>
+      <super-tab [root]="tab2Root" title={{textData[1]}} icon="ios-videocam" class="{{font}}"></super-tab>
+      <super-tab [root]="tab3Root" title={{textData[2]}} icon="ios-mic" class="{{font}}"></super-tab>
+    </super-tabs>
+  </div>
+
+<!--   <ion-fab right bottom *ngIf="valid==true">
+    <button color="danger" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+
+    <ion-fab-list side="top">
+      <button color="danger" ion-fab (click)="goPost()">
+        <ion-icon name="ios-paper"></ion-icon>
+      </button>
+
+      <button color="danger" ion-fab (click)="goAddPost()">
+        <ion-icon name="ios-create" style="margin-left: 4px; margin-top: -1px;"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+  <ion-fab right bottom *ngIf="valid==true">
+      <button color="danger" ion-fab (click)="goPost()">
+        <ion-icon name="ios-paper"></ion-icon>
+      </button>
+  </ion-fab>
+</ion-content>

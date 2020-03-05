@@ -1,0 +1,56 @@
+page-noti {
+
+    [ion-fixed]{
+        position: relative;
+    }
+    
+    .approval{
+        display: inline-block;
+        margin-left: 8px;
+        position: absolute;
+        //margin-top: 3px;
+        font-size: 13px;
+        margin-bottom: 6px;
+        margin-right:-1px;
+        width:96%
+    }
+    .scroll-content {
+        padding:0 !important;
+    }
+
+    .item-md {
+        height: 87px;
+        padding-left: 3px;
+        //padding-right:7px;;
+        position: relative;
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-transform: none;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .ion-note {
+        font-size: 12px;
+        align-self: flex-start;
+      }
+
+    .label-md {
+        margin: 13px 3px 13px 0px;
+    }
+   
+    .img-wrap{
+        position: relative;
+       // display: inline-block;
+        font-size: 0;
+        float: left;
+    }
+    
+    .item-inner{
+        height:100px;
+    }
+   
+    .label-md {
+        margin: 13px -19px 13px -3px;
+    }
+}

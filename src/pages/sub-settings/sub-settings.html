@@ -1,0 +1,23 @@
+<!--
+  Generated template for the SubSettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="b2b">
+    <ion-title><span class="{{font}}">{{textmyantitle[0]}}</span></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item no-lines *ngFor="let item of items" (click)="clickItem(item.key)">
+      <ion-icon [name]="item.icon" item-start style="color: #f53d3d;"></ion-icon>
+      <span class="menu-text {{font}}">{{item.name}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

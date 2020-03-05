@@ -1,0 +1,167 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-header>
+  <ion-navbar color="b2b">
+    <ion-title><span class="{{font}}">{{textData[0]}}</span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div style="padding-top: 5px;" *ngIf="isLoading">
+    <div align="center" ><ion-spinner name="circles" style="color:limegreen;"></ion-spinner></div>
+  </div>
+  <div class="bounceInUp" width="100%" align="center">
+    <div class="img-wrap1">
+      <img src="{{profileImg}}" class="imgheight">
+      <ion-icon name = "ios-create-outline" class="close" style="font-size:25px;bottom: 0px;padding-left:10px;padding-right:10px;border-bottom-left-radius: 0%;border-top-left-radius: 10%;color:green;" (click)="imageEdit()"></ion-icon>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-item class="bounceInUp1">
+      <ion-label stacked>
+        <span class="{{font}}">{{textData[1]}}</span>
+        <span style="color:red;">*&nbsp;</span>
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="userName"  style="font-family:  ZawgyiOne;"></ion-input>
+    </ion-item>
+    <div style="color:red;padding-top: 8px;" align="center" *ngIf="requiredUsername" class="{{font}}">{{textData[8]}}</div>
+
+    <ion-item class="bounceInUp2">
+      <ion-label stacked>
+        <span class="{{font}}">{{textData[2]}}</span>
+        <span style="color:red;">*&nbsp;</span>
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="phone" disabled="true"></ion-input>
+    </ion-item>
+    <div style="color:red;padding-top: 8px;" align="center" *ngIf="requiredPhone" class="{{font}}">{{textData[9]}}</div>
+
+    <ion-item class="bounceInUp3">
+      <ion-label stacked><span class="{{font}}">{{textData[3]}}</span>
+        <span style="color:red;">*&nbsp;</span></ion-label>
+      <ion-select [(ngModel)]="state" class="uni" (ionChange)="getDistrict(state)">
+        <ion-option *ngFor="let a of stateData" [value]="a.code">
+          <span class="{{font}}">{{a.myanCaption}}</span>
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <div style="color:red;padding-top: 8px;" align="center" *ngIf="requiredState" class="{{font}}">{{textData[10]}}</div>
+
+    <ion-item class="bounceInUp4">
+      <ion-label stacked><span class="{{font}}">{{textData[4]}}</span>
+        <span style="color:red;">*&nbsp;</span></ion-label>
+            <ion-select [(ngModel)]="township"  class="uni" (ionChange)="getTspName(township)">
+              <ion-option *ngFor="let d of townshipData" [value]="d.code">
+                <span class="{{font}}">{{d.myanCaption}}</span>
+              </ion-option>
+            </ion-select>
+    </ion-item>
+    <div style="color:red;padding-top: 8px;" align="center" *ngIf="requiredTownship" class="{{font}}">{{textData[11]}}</div>
+
+    <ion-item no-lines class="bounceInUp5">
+      <ion-label stacked>
+        <span class="{{font}}">{{textData[6]}}</span>
+        <span style="color:red;">*&nbsp;</span>
+      </ion-label>
+      <ion-select [(ngModel)]="gender" >
+        <ion-option value="0"><span class="{{font}}">ကျား</span> </ion-option>
+        <ion-option value="1"><span class="{{font}}">မ</span> </ion-option>
+      </ion-select>
+    </ion-item>
+    <div style="color:red;padding-top: 8px;" align="center" *ngIf="requiredGender" class="{{font}}">{{textData[12]}}</div>
+  </ion-list>
+  <div padding style="padding-left:0px;padding-right:0px;">
+    <button class="bounceInUp6" ion-button block color="danger" (click)="uploadProfilePhoto()">
+      <span class="{{font}}">{{textData[7]}}</span>
+    </button>
+  </div>
+</ion-content> -->
+<ion-header no-border>
+  <ion-navbar transparent style="background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%, rgba(255, 255, 0, 0.2) 100%, rgba(0, 255, 255, 0) 100%);">
+    <ion-title><span class="{{font}}" style="color: white;">{{textData[0]}}</span></ion-title>
+    <ion-buttons end style="padding-left:5px;">
+      <button ion-button icon-only (click)="changelanfont()">
+        <ion-icon name="md-more"></ion-icon>
+      </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen class="user-content">
+  <div style="padding:0px;height: 160px;">
+    <img src="assets/images/editbg.jpg" style="width:100%;height: 160px;">
+  </div>
+  <div width="100%" align="center">
+    <div class="img-wrap1">
+      <img (click)="imageEdit()" src="{{profileImg}}" class="imgheight" onError="this.src = 'assets/images/user-icon.png'">
+      <ion-icon style="font-size:25px;bottom: 0px;margin-left: -30px;color:#928b8b;" name = "ios-create" (click)="imageEdit()"></ion-icon>
+    </div>
+  </div>
+  <div *ngIf="isLoading">
+    <div align="center" ><ion-spinner name="circles" style="color:limegreen;"></ion-spinner></div>
+  </div>
+  <form>
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          <ion-item>
+            <ion-input type="text" placeholder="{{textData[1]}}" name="name" [(ngModel)]="userName" required class="{{textFont}}"></ion-input>
+          </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredUsername" class="{{font}}">{{textData[8]}}</div>
+          <ion-item>
+            <ion-input type="text" placeholder="{{textData[2]}}" name="phone" [(ngModel)]="phone" required disabled="true" class="{{font}}"></ion-input>
+          </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredPhone" class="{{font}}">{{textData[9]}}</div>
+          <ion-item>
+             <ion-input type="password" placeholder="{{textData[13]}}" name="password" [(ngModel)]="password" required class="{{font}}"></ion-input>
+           </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredPassword" class="{{font}}">{{textData[15]}}</div>
+           <ion-item>
+             <ion-input type="password" placeholder="{{textData[14]}}" name="conpassword" [(ngModel)]="conpassword" required class="{{font}}"></ion-input>
+           </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredConpassword" class="{{font}}">{{textData[16]}}</div>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredEqupassword" class="{{font}}">{{textData[17]}}</div>
+          <!--<ion-item>
+            <ion-label stacked><span class="{{font}}">{{textData[3]}}</span></ion-label>
+            <ion-select [(ngModel)]="state" class="uni" (ionChange)="getDistrict(state)" name="cty">
+              <ion-option *ngFor="let a of stateData" [value]="a.code">
+                <span class="{{font}}">{{a.myanCaption}}</span>
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredState" class="{{font}}">{{textData[10]}}</div>
+          <ion-item>
+            <ion-label stacked><span class="{{font}}">{{textData[4]}}</span></ion-label>
+            <ion-select [(ngModel)]="township"  class="uni" (ionChange)="getTspName(township)" name="tsp">
+              <ion-option *ngFor="let d of townshipData" [value]="d.code">
+                <span class="{{font}}">{{d.myanCaption}}</span>
+              </ion-option>
+            </ion-select>
+          </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredTownship" class="{{font}}">{{textData[11]}}</div>-->
+          <ion-item>
+            <ion-label stacked>
+              <span class="{{font}}">{{textData[6]}}</span>
+            </ion-label>
+            <ion-select [(ngModel)]="gender" name="gender">
+              <ion-option value="0"><span class="{{font}}">ကျား</span> </ion-option>
+              <ion-option value="1"><span class="{{font}}">မ</span> </ion-option>
+            </ion-select>
+          </ion-item>
+          <div style="color:red;padding-bottom: 8px;" align="center" *ngIf="requiredGender" class="{{font}}">{{textData[12]}}</div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn" full (click)="uploadProfilePhoto()"><span class="{{font}}">{{textData[7]}}</span></button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

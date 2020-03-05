@@ -1,0 +1,93 @@
+page-save-content-detail {
+  
+   @mixin multiLineEllipsis($lineHeight: 1.6em, $lineCount: 1, $bgColor: white){
+    overflow: hidden;
+    position: relative;
+    line-height: $lineHeight;
+    max-height: $lineHeight * $lineCount;
+    text-align: justify;
+    &:before {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      width: 1em;
+      height: 1em;
+      margin-top: 1em;
+      background: $bgColor;
+    }
+  }
+
+.text-with-block {
+  @include multiLineEllipsis($lineHeight: 1.6em, $lineCount: 3, $bgColor: '');
+}
+
+  .video-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+  }
+
+  .play, .pause{
+    background:rgba(0,0,0,0.7);
+    border:0px;
+    color:#fff;
+    border-radius: 100%;
+    height:40px;
+    width:40px;
+  }
+
+  .video-container iframe, .video-container object, .video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .resize {
+    height: 200px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 200px;
+    display: inline-block;
+    margin-right: auto;
+    object-fit: cover;
+    // margin-top: 10px;
+  }
+
+  .imgsize {
+    max-width: 65%;
+    max-height: 250px;
+    margin: 0 auto;
+  }
+
+  .emojisize{
+    img {
+     display: block;
+     width: auto;
+     float: left;
+   }
+ }
+ .container {
+  margin: 0px;
+  width: 100%;
+  //height: 220px;
+  line-height: 115px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.resize_fit_center {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+}
+}

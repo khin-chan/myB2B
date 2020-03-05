@@ -1,0 +1,168 @@
+page-post-text {
+
+  .signup-col {
+    margin: 0px 16px 0px 16px;
+    padding-bottom: 20px;
+  }
+
+  .submit-btn {
+    background-color: #d14842;
+    border-radius: 30px !important;
+    border: 1px solid #ffffff;
+    text-transform: none;
+}
+
+  .noti .input-wrapper{
+    max-width:0px !important;
+    }  
+  
+    .option {
+      font-family: Unicode;
+      font-size: 8px;
+      line-height: 1.2;
+      letter-spacing: 0.1px;
+      color: #000;
+      width: 100% !important;
+      max-width: 100% !important;
+      justify-content: center;
+      height: 20px;
+      }
+  
+      .alert-md .alert-radio-group, .alert-md .alert-checkbox-group {
+        position: relative;
+        overflow: auto;
+        max-height: 200px;
+        border-top: 1px solid #dedede;
+        border-bottom: 1px solid #dedede;
+        padding: 18px 20px 18px;
+        
+        }
+        .alert-title {
+        margin: 0;
+        padding: 0;
+     
+        }
+        .alert-wrapper {
+          max-height: 180px;
+          max-width: 60%;
+        }
+  
+       label, input, select, textarea {
+       // font-family: inherit;
+        line-height: normal;
+        text-transform: none;
+       }
+  
+       .textArea {
+         padding-left: 6px;
+         line-height: 2.3rem;
+         margin: 0px;
+         font-size: 16px;
+         color: #8D949E;
+       }
+       
+      //  .text-input-md {
+      //   text-align: justify;
+      //   margin: 0px 8px 0px 10px;
+      //   padding: 0;
+      //   width: calc(100% - 8px - 8px);
+      //  }
+  
+      .text-input-md {
+        padding: 0;
+        margin-left: 10px;
+        //margin-top: 15px;
+        text-align: justify;
+       }
+
+      .text-input-ios {
+       padding: 0;
+       margin-left: 10px;
+       //margin-top: 15px;
+       text-align: justify;
+       }
+
+      .datetime-md {
+        padding-top: 13px;
+        padding-left: 0px;
+        padding-right: 6px;
+        padding-bottom: 6px;
+      }
+    
+    .edit-content {
+      background: #e8e8e8; //#d4534e
+  
+      ion-item {
+        border-radius: 6px !important;
+        padding-left: 15px !important;
+        font-size: 0.9em;
+        margin-bottom: 6px;
+        border: 1px solid #ffffff;
+        border-bottom: 0px !important;
+        box-shadow: none !important;
+      }
+
+     }
+
+     [col-4] {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 33.33333%;
+      -ms-flex: 0 0 33.33333%;
+      flex: 0 0 30.33333%;
+      width: 31.33333%;
+      max-width: 31.33333%;
+    }
+
+    .item-label-stacked .select-md, .item-label-floating .select-md {
+      padding-left: 0;
+      padding-top: 4px;
+      padding-bottom: 5px;
+    }
+
+    .item-input-has-focus .label-md[stacked], .input-has-focus .label-md[stacked], .item-input-has-focus .label-md[floating], .input-has-focus .label-md[floating] {
+      color: #999;
+    }
+
+    .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, page-post-text .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+      border-bottom-color: #fff;
+      -webkit-box-shadow: inset 0 -1px 0 0 #fff;
+      box-shadow: inset 0 -1px 0 0 #fff;
+    }
+
+    .item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner {
+      border-bottom-color: #fff;
+      -webkit-box-shadow: inset 0 -1px 0 0 #fff;
+      box-shadow: inset 0 -1px 0 0 #fff;
+    }
+
+    .editbtn{
+      background-color: #f7f3f3;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+      border-radius: 5px 0px;
+      height: 30px;
+      width: 50px;
+      margin: 0px;
+      opacity: 0.8;
+    }
+
+    .editbtn1{
+      background-color: #f7f3f3;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+      border-radius: 0px 5px;
+      height: 30px;
+      width: 50px;
+      margin: 0px;
+      opacity: 0.8;
+    }
+     
+  }
+  
+  

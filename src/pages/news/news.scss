@@ -1,0 +1,81 @@
+page-news {
+  .resize {
+    height: 170px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 170px;
+    display: inline-block;
+    margin-right: auto;
+    object-fit: cover;
+    // margin-top: 10px;
+    }
+    .resizegrid {
+    height: 140px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 140px;
+    display: inline-block;
+    margin-right: auto;
+    object-fit: cover;
+    // margin-top: 10px;
+    }
+  .positioner {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .emojisize{
+    img {
+     display: block;
+     width: auto;
+     float: left;
+   }
+ }
+
+  .icscon {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .icscon1 {
+    position: absolute;
+    right: -38px;
+    bottom: -15px;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  /*.fab[mini] {
+    margin: 8px;
+    width: 35px;
+    height: 35px;
+    line-height: 40px;
+  }
+
+  ion-fab[top] {
+    top: 0px;
+  }*/
+  
+  [ion-fixed]{
+    position: relative;
+  }
+
+  .container{
+    margin: 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .resize_fit_center {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+  }
+}

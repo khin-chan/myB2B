@@ -1,0 +1,92 @@
+page-otp-confrim {
+
+
+    .register-content {
+        background: #e8e8e8; //#d4534e
+    
+        #welcome{
+          h1{
+            font-size: 18px;
+            margin-top:20px;
+            color : #0c6db6;
+            font-weight: bold;
+          }
+          .marginTop{
+            margin-top:150px;
+          }
+          .logo{
+            height: 100px;
+          }
+        }
+    
+        .login-box {
+          background: #509287;
+          padding: 20px 20px 0px 20px;
+          margin-top: 30px;
+        }
+    
+        ion-row {
+          align-items: center;
+          text-align: center;
+        }
+    
+        ion-item {
+          border-radius: 30px !important;
+          padding-left: 30px !important;
+          font-size: 1.0em;
+          margin-bottom: 10px;
+          border: 1px solid #ffffff;
+          border-bottom: 0px !important;
+          box-shadow: none !important;
+        }
+    
+        .signup-col {
+          margin: 0px 16px 0px 16px;
+          padding-bottom: 20px;
+        }
+    
+        .item-inner {
+          border-bottom-color: #ffffff !important;
+          box-shadow: none !important;
+        }
+    
+        .submit-btn {
+          background: #d14842;//#0d6eb6;
+          border-radius: 30px !important;
+          border: 1px solid #ffffff;
+        }
+      }
+      .button-md {
+        height: 4.6rem;
+      }
+      .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+        color: #fff;
+        background-color: transparent;
+      }
+      
+      .fblogo{
+        width: 13%;
+        margin-right: 11px;
+        margin-left: -4px;
+      }
+
+      .fb-btn {
+        //margin: 0px 80px 0px 80px;
+        margin: 0px 22% 0px 22%;
+      }
+    
+      .fbsubmit-btn {
+       // background: #1977f3;
+       background:#3d8ffc;
+       border-radius: 3px !important;
+       border: 1px solid #3d8ffc;
+       font-size: 1.6rem;
+       font-weight: 600;
+       height: 3.8rem;
+      }
+
+      .footer-md::before{
+        background-image: none !important;
+      }
+      
+}

@@ -1,0 +1,70 @@
+<!--
+  Generated template for the TeacherListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="b2b">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+      <span style="width: 10px;height:10px;border-radius: 100%;margin-top:-10px;margin-left:-10px;background-color:#2DC70D;"
+        *ngIf=" notiStatus"></span>
+    </button>
+    <ion-title><span class="{{font}}"> Learning From Learners </span></ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div ion-fixed style="padding-top: 10px;" *ngIf="isLoading">
+    <div align="center">
+      <ion-spinner name="circles" style="color: #EB6944;background-color: white;border-radius: 50%;"></ion-spinner>
+    </div>
+  </div>
+  <!--  <ion-refresher (ionRefresh)="doRefresh($event)" *ngIf="!isLoading">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="">
+    </ion-refresher-content>
+  </ion-refresher> -->
+
+  <div class="updiv" *ngIf="flag">
+    <ion-slides *ngIf="slideData && slideData.length" pager="true" [autoplay]="5000" 
+     [speed]="700" loop="true">
+      <ion-slide *ngFor="let slide of slideData" (click)="promotionLearner(slide)">
+        <img src="{{slideImg}}{{slide.image}}" class="slide-image" />
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div *ngIf="nores == 1">
+    <div *ngFor="let i of array">
+      <ion-row *ngIf="i.t5=='row'">
+        <ion-col col-4 *ngFor="let j of i.data" (click)="viewTeacherListDetail(j)" style="padding: 5px;">
+          <img [src]="j.t3" onError="this.src = 'assets/images/user-icon.png'" style="padding-left: 1%;width: 99%;border-radius: 7px;height: 88%">
+          <h3 style="font-weight: bold;font-size: 1.5rem;text-align: center;">{{j.t1}}</h3>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div *ngIf="nores == 0" align="center">
+    <h3 style="padding:50px;color:#ccc;font-size:1.9rem;"> <span class="{{font}}">{{textData[0]}}</span></h3>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!isLoading && showmoredata">
+    <ion-infinite-scroll-content loadingSpinner="circles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<!-- <ion-list>
+      <ion-item *ngFor="let i of teacherData" (click)="viewTeacherListDetail(i)">
+        <ion-avatar item-start>
+          <img src="{{imageLink}}/{{i.t3}}" onError="this.src = 'assets/images/user-icon.png'">
+        </ion-avatar>
+        <h2>{{i.t1}} </h2>
+        <button ion-button clear item-end>
+          <ion-icon name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list> -->
